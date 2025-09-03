@@ -3,10 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, IInputInitialize
+public class PlayerController : MonoBehaviour
 {
-    InputAction _aim;
-    InputAction _shoot;
+    [SerializeField] InputAction _aim;
     [SerializeField] private GameObject _hook;
     public GameObject Hook
     {
@@ -20,44 +19,51 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
 
-    #region LocalMultiplayer
+<<<<<<< HEAD
     public float life = 100f;
+
+=======
+    #region LocalMultiplayer
 
     //Player Index (Used for Local Multiplayer)
     [SerializeField] private int _playerIndex;
     public int PlayerIndex => _playerIndex;
 
-    public void Initialize(PlayerInput playerInput)
+    public void Initialize(InputAction aimInput, InputAction hookInput)
     {
-        _aim = playerInput.actions["Aim"];
-        _shoot = playerInput.actions["Shoot"];
+        _aim = aimInput;
         if (_hookController != null)
         {
-            _hookController.Initialize(_aim, _shoot);
+            _hookController.Initialize(aimInput, hookInput);
+        }
+        else
+        {
+            Debug.LogError("No HookController found");
         }
     }
     
     #endregion
     
+>>>>>>> dev
     private void Start()
     {
         _rbHook = _hook?.GetComponent<Rigidbody2D>();
         _rb = this.GetComponent<Rigidbody2D>();
 
         _hookController = _hook?.GetComponent<HookController>();
-        if (_hookController != null && _aim != null)
-        {
-            _hookController.Initialize(_aim, _shoot);
-        }
     }
 
     private void FixedUpdate()
     {
-        if (_aim == null) return;
         #region Aim
 
-        a = _aim.ReadValue<Vector2>();
+<<<<<<< HEAD
+        a = _aim.action.ReadValue<Vector2>();
         if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero)
+=======
+        a = _aim.ReadValue<Vector2>();
+        if (a != Vector2.zero)
+>>>>>>> dev
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
 
