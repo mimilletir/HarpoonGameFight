@@ -7,12 +7,19 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] InputActionReference _aim;
     [SerializeField] private GameObject _hook;
-    [SerializeField] private float _playerSpeed;
+    public GameObject Hook
+    {
+        get => _hook;
+    }
+
+    private float _playerSpeed;
     private HookController _hookController;
     private Vector2 a;
     private float h = 0.0f;
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
+
+    public float life = 100f;
 
     private void Start()
     {
@@ -27,7 +34,7 @@ public class PlayerController : MonoBehaviour
         #region Aim
 
         a = _aim.action.ReadValue<Vector2>();
-        if (a != Vector2.zero)
+        if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero)
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
 
@@ -39,12 +46,18 @@ public class PlayerController : MonoBehaviour
 
         #region Move
 
-        if (Vector2.Distance(_rbHook.position, this.transform.position) > 0.1f &&
-            _rbHook.linearVelocity == Vector2.zero)
+        if (Vector2.Distance(_rbHook.position, this.transform.position) > 0.2f && _rbHook.linearVelocity == Vector2.zero)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, _rbHook.position, _playerSpeed / 100f);
         }
 
         #endregion
+    }
+    public void OnDie()
+    {
+        Debug.Log("Player has been killed");
+        Destroy(_hook);
+        Destroy(gameObject);
+        
     }
 }

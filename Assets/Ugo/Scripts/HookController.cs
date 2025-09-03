@@ -26,7 +26,8 @@ public class HookController : MonoBehaviour
 
         if (_shoot.action.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < _playerWidth)
         {
-            _rb.AddForce(_hookSpeed * _aim.action.ReadValue<Vector2>().normalized, ForceMode2D.Force);
+            _rb.linearVelocity = _hookSpeed * _aim.action.ReadValue<Vector2>() * Time.fixedDeltaTime;
+            // _rb.AddForce(_hookSpeed * _aim.action.ReadValue<Vector2>().normalized, ForceMode2D.Force);
         }
 
         #endregion
