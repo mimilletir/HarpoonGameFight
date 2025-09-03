@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BouncingBall
   _speed: 5
-  _damage: 0
+  _damage: 5
 --- !u!58 &581003167
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1149,6 +1149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1685572138}
   - component: {fileID: 1685572137}
+  - component: {fileID: 1685572140}
   - component: {fileID: 1685572136}
   - component: {fileID: 1685572135}
   - component: {fileID: 1685572134}
@@ -1429,6 +1430,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 1523177378}
+--- !u!114 &1685572140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685572133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8816acd2064a484ab0c40809feefbe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  _health: 100
 --- !u!1 &1965690428
 GameObject:
   m_ObjectHideFlags: 0

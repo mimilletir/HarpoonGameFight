@@ -21,7 +21,10 @@ public class BouncingBall : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(_damage);
             Destroy(gameObject);
+        }
 
         var direction = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
         _rb.linearVelocity = direction * _speed;
