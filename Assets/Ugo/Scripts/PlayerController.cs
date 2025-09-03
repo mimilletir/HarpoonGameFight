@@ -1,13 +1,14 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] InputActionReference _aim;
-    [SerializeField] InputActionReference _shoot;
     [SerializeField] private GameObject _hook;
-    [SerializeField] private float _hookSpeed;
+    [SerializeField] private float _playerSpeed;
+    private HookController _hookController;
     private Vector2 a;
     private float h = 0.0f;
     private Rigidbody2D _rbHook;
@@ -29,38 +30,35 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
-        _rbHook =  _hook?.GetComponent<Rigidbody2D>();
-        _rb = _rbHook.GetComponent<Rigidbody2D>();
+        _rbHook = _hook?.GetComponent<Rigidbody2D>();
+        _rb = this.GetComponent<Rigidbody2D>();
+
+        _hookController = _hook?.GetComponent<HookController>();
     }
 
     private void FixedUpdate()
     {
         #region Aim
+
         a = _aim.action.ReadValue<Vector2>();
         if (a != Vector2.zero)
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
-            
+
             _hook.transform.rotation = Quaternion.Euler(0, 0, h);
-            
+
         }
+
         #endregion
 
-        #region Shoot
+        #region Move
 
-        if (_shoot.action.IsPressed())
+        if (Vector2.Distance(_rbHook.position, this.transform.position) > 0.1f &&
+            _rbHook.linearVelocity == Vector2.zero)
         {
-            Debug.Log("Been here");
-            _rbHook.AddForce(_hookSpeed * a.normalized, ForceMode2D.Force);
-            //_rbHook.linearVelocity = _hook.transform.forward * _hookSpeed;
+            this.transform.position = Vector2.MoveTowards(this.transform.position, _rbHook.position, _playerSpeed / 100f);
         }
 
         #endregion
-        
-    }
-
-    public void MoveTowards(Vector2 direction)
-    {
-        this._rb.MovePosition(this._rb.position + direction);
     }
 }
