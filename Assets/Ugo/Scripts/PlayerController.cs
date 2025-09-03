@@ -13,6 +13,20 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
 
+    #region LocalMultiplayer
+
+    //Player Index (Used for Local Multiplayer)
+    [SerializeField] private int _playerIndex;
+    public int PlayerIndex => _playerIndex;
+
+    public void Initialize(InputActionReference aimInput, InputActionReference shootInput)
+    {
+        _aim = aimInput;
+        _shoot = shootInput;
+    }
+    
+    #endregion
+    
     private void Start()
     {
         _rbHook =  _hook?.GetComponent<Rigidbody2D>();
