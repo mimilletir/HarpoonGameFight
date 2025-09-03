@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class HookController : MonoBehaviour
-{
-    [SerializeField] private InputActionReference _shoot;
-    [SerializeField] private InputActionReference _aim;
+{ 
+    private InputAction _shoot;
+    private InputAction _aim;
     [SerializeField] private PlayerController _player;
     public float _hookSpeed;
     private Rigidbody2D _rb;
@@ -24,9 +24,15 @@ public class HookController : MonoBehaviour
     {
         #region Shoot
 
-        if (_shoot.action.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < _playerWidth)
+        if (_shoot is null || _aim is null)
         {
-            _rb.AddForce(_hookSpeed * _aim.action.ReadValue<Vector2>().normalized, ForceMode2D.Force);
+            Debug.Log("Not binded yet");
+            return;
+        }
+        
+        if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < _playerWidth)
+        {
+            _rb.AddForce(_hookSpeed * _aim.ReadValue<Vector2>().normalized, ForceMode2D.Force);
         }
 
         #endregion
@@ -38,5 +44,12 @@ public class HookController : MonoBehaviour
         {
             _rb.linearVelocity = Vector2.zero;
         }
+    }
+
+    public void Initialize(InputAction aimInput, InputAction hookInput)
+    {
+        Debug.Log("Initializing hook");
+        _aim = aimInput;
+        _shoot = hookInput;
     }
 }

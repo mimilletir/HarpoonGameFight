@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] InputActionReference _aim;
+    [SerializeField] InputAction _aim;
     [SerializeField] private GameObject _hook;
     [SerializeField] private float _playerSpeed;
     private HookController _hookController;
@@ -14,6 +14,27 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
 
+    #region LocalMultiplayer
+
+    //Player Index (Used for Local Multiplayer)
+    [SerializeField] private int _playerIndex;
+    public int PlayerIndex => _playerIndex;
+
+    public void Initialize(InputAction aimInput, InputAction hookInput)
+    {
+        _aim = aimInput;
+        if (_hookController != null)
+        {
+            _hookController.Initialize(aimInput, hookInput);
+        }
+        else
+        {
+            Debug.LogError("No HookController found");
+        }
+    }
+    
+    #endregion
+    
     private void Start()
     {
         _rbHook = _hook?.GetComponent<Rigidbody2D>();
@@ -26,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         #region Aim
 
-        a = _aim.action.ReadValue<Vector2>();
+        a = _aim.ReadValue<Vector2>();
         if (a != Vector2.zero)
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
