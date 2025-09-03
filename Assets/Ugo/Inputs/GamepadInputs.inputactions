@@ -1,0 +1,66 @@
+{
+    "version": 1,
+    "name": "GamepadInputs",
+    "maps": [
+        {
+            "name": "Hook",
+            "id": "5a7a1735-e564-4b9a-9ce9-188096ea6841",
+            "actions": [
+                {
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "c8ea7a39-15ed-400d-9176-3f247c0a3773",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "63b62da3-2fd9-4e31-ba76-c2b10ce26e07",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "16324310-2f1c-424c-985b-d8bfe08efeb0",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "238ad026-372c-4f6d-b488-8e90f67fae45",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e03dfac4-7f6c-47e8-98f3-4a0e1f86f976",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
