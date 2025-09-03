@@ -19,8 +19,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
 
-    #region LocalMultiplayer
+<<<<<<< HEAD
     public float life = 100f;
+
+=======
+    #region LocalMultiplayer
 
     //Player Index (Used for Local Multiplayer)
     [SerializeField] private int _playerIndex;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     
     #endregion
     
+>>>>>>> dev
     private void Start()
     {
         _rbHook = _hook?.GetComponent<Rigidbody2D>();
@@ -53,8 +57,13 @@ public class PlayerController : MonoBehaviour
     {
         #region Aim
 
-        a = _aim.ReadValue<Vector2>();
+<<<<<<< HEAD
+        a = _aim.action.ReadValue<Vector2>();
         if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero)
+=======
+        a = _aim.ReadValue<Vector2>();
+        if (a != Vector2.zero)
+>>>>>>> dev
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
 

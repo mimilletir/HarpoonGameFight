@@ -60,6 +60,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "3e71977f-6af0-4f89-9353-7b91b6ea3cc2",
+            "actions": [
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "356586c3-6ad1-4913-b38d-5a0e8ae487e9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9a1deec5-7161-4d1d-a870-a27215474fca",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
