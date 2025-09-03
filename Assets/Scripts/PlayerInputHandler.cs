@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private InputActionReference _aim;
-    [SerializeField] private InputActionReference _shoot;
+    
     private PlayerInput _playerInput;
     public void Awake()
     {
         DontDestroyOnLoad(this);
         _playerInput = GetComponent<PlayerInput>();
+        BindPlayerObjectInScene();
     }
 
     //Find and bind to Player in Scene, only call on beginning of Scene
@@ -22,7 +22,10 @@ public class PlayerInputHandler : MonoBehaviour
             PlayerController playerControllerScript = playerObject.GetComponent<PlayerController>();
             if (playerControllerScript != null && playerControllerScript.PlayerIndex == _playerInput.playerIndex)
             {
-                playerControllerScript.Initialize(_aim,_shoot);
+                Debug.Log(playerObject.name + "" + _playerInput.playerIndex);
+                InputAction aimInput = _playerInput.actions["Aim"];
+                InputAction shootInput = _playerInput.actions["Shoot"];
+                playerControllerScript.Initialize(aimInput, shootInput);
             }
         }
     }

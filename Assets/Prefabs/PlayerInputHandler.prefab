@@ -98,6 +98,6 @@ MonoBehaviour:
     m_ActionName: 'Menu/Join[/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: 5a7a1735-e564-4b9a-9ce9-188096ea6841
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
