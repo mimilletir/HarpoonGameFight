@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInputHandler : MonoBehaviour
 {
@@ -11,6 +12,13 @@ public class PlayerInputHandler : MonoBehaviour
         DontDestroyOnLoad(this);
         _playerInput = GetComponent<PlayerInput>();
         BindPlayerObjectInScene();
+        SceneManager.sceneLoaded += OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
+    {
+        BindPlayerObjectInScene();
+        _playerInput.SwitchCurrentActionMap(_playerInput.defaultActionMap);
     }
 
     //Find and bind to Player in Scene, only call on beginning of Scene
@@ -19,13 +27,10 @@ public class PlayerInputHandler : MonoBehaviour
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject playerObject in playerObjects)
         {
-            PlayerController playerControllerScript = playerObject.GetComponent<PlayerController>();
-            if (playerControllerScript != null && playerControllerScript.PlayerIndex == _playerInput.playerIndex)
+            IInputInitialize inputInitializer = playerObject.GetComponent<IInputInitialize>();
+            if (inputInitializer != null && inputInitializer.PlayerIndex == _playerInput.playerIndex)
             {
-                Debug.Log(playerObject.name + "" + _playerInput.playerIndex);
-                InputAction aimInput = _playerInput.actions["Aim"];
-                InputAction shootInput = _playerInput.actions["Shoot"];
-                playerControllerScript.Initialize(aimInput, shootInput);
+                inputInitializer.Initialize(_playerInput);
             }
         }
     }
