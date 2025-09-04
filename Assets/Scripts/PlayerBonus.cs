@@ -44,6 +44,7 @@ public class PlayerBonus : MonoBehaviour
                     break;
                 case BonusEnum.Squid:
                     GameObject Squid = Instantiate(_squid, transform.position, Quaternion.identity);
+                    Squid.GetComponent<SquidController>().playerIndexMaster = _playerController.PlayerIndex;
                     break;
                 case BonusEnum.SwapPlace:
                     break;

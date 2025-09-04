@@ -168,6 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08010c68e6726104f8fe23a0acb9f545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BouncingBall
-  _speed: 5
+  _speed: 25
   _damage: 25
   _maxNBounce: 4

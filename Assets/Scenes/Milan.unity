@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 145246790}
   - component: {fileID: 145246792}
   - component: {fileID: 145246791}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 354423823}
   - component: {fileID: 354423825}
   - component: {fileID: 354423824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,9 +774,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8982076454188811523, guid: 26232934fbe9e204297f489c03a634a5, type: 3}
+      propertyPath: _bonus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982076454188811523, guid: 26232934fbe9e204297f489c03a634a5, type: 3}
       propertyPath: _squid
       value: 
       objectReference: {fileID: 6711383664662341254, guid: d7b60b8dd05ee5745a79d5670b8e1556, type: 3}
+    - target: {fileID: 8982076454188811523, guid: 26232934fbe9e204297f489c03a634a5, type: 3}
+      propertyPath: haveBonus
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8982076454188811523, guid: 26232934fbe9e204297f489c03a634a5, type: 3}
       propertyPath: _bouncingBall
       value: 

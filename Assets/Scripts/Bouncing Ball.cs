@@ -8,6 +8,7 @@ public class BouncingBall : MonoBehaviour
     private int _nBounce = 0;
     private Rigidbody2D _rb;
     private Vector3 lastVelocity;
+    [HideInInspector] public int playerIndexMaster;
 
     private void Start()
     {
@@ -27,6 +28,9 @@ public class BouncingBall : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
+            if (collision.gameObject.GetComponent<PlayerController>().PlayerIndex == playerIndexMaster)
+                return;
+
             collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(_damage);
             Destroy(gameObject);
         }
@@ -34,6 +38,6 @@ public class BouncingBall : MonoBehaviour
         _nBounce++;
 
         var direction = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
-        _rb.linearVelocity = direction * _speed;
+        _rb.linearVelocity = 0.2f * direction * _speed;
     }
 }
