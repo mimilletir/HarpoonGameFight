@@ -29,6 +29,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        _gameManager.PauseGame(_playerInput);
+    }
+
     private void OnGameChanged(GamePhase gamePhase)
     {
         _interactInput.performed -= RestartGame;
