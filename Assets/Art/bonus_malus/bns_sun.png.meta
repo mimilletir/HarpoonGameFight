@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4aea07e23638a0344b809a6502052204
+guid: 1ccb391ee47dad447bb307218ea78c57
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1195981859756130968
-    second: mls_rocket_0
+      213: -7083383661411846403
+    second: bns_sun_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mls_rocket_0
+      name: bns_sun_0
       rect:
         serializedVersion: 2
-        x: 190
-        y: 102
-        width: 132
-        height: 308
+        x: 75
+        y: 75
+        width: 362
+        height: 362
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89243943a2bf89010800000000000000
-      internalID: 1195981859756130968
+      spriteID: df6bdbdd614c2bd90800000000000000
+      internalID: -7083383661411846403
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mls_rocket_0: 1195981859756130968
+      bns_sun_0: -7083383661411846403
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
