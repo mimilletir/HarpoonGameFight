@@ -46,6 +46,10 @@ public class PlayerBonus : MonoBehaviour
                     Squid.GetComponent<SquidController>().playerIndexMaster = _playerController.PlayerIndex;
                     break;
                 case BonusEnum.SwapPlace:
+                    PlayerController otherPlayer = GameManager.Instance.GetPlayerFromIndex(_playerController.PlayerIndex == 0 ? 1 : 0);
+                    otherPlayer.ResetHook();
+                    _playerController.ResetHook();
+                    (otherPlayer.transform.position, transform.position) = (transform.position, otherPlayer.transform.position);
                     break;
             }
 

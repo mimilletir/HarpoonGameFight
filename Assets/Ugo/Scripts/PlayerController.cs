@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = System.Random;
 
@@ -67,6 +68,8 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         _hookController = _hook?.GetComponent<HookController>();
         _playerBonus = GetComponent<PlayerBonus>();
         
+        if (GameManager.Instance == null) {SceneManager.LoadScene("MainMenu");}
+        GameManager.Instance.GivePlayerReference(this);
         
         life = _maxLife;
         TakeDamage(0);

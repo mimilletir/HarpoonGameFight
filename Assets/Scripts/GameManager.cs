@@ -22,6 +22,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string _victorySceneName;
     private GamePhase _currentGamePhase = GamePhase.MainMenu;
 
+    private PlayerController[] _players = new PlayerController[2];
+
+    public void GivePlayerReference(PlayerController player)
+    {
+        _players[player.PlayerIndex] = player;
+    }
+
     private bool bIsLoadingScene = false;
     
     //Called when Scene is changed 
@@ -73,6 +80,7 @@ public class GameManager : MonoBehaviour
             yield return SceneManager.LoadSceneAsync(sceneName);
             _currentGamePhase = gamePhase;
             OnGamePhaseChanged?.Invoke(gamePhase);
+            _players = new PlayerController[2];
             bIsLoadingScene = false;
             /*if (gamePhase == GamePhase.Gameplay)
             {
@@ -102,5 +110,14 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
+    }
+
+    public PlayerController GetPlayerFromIndex(int playerIndex)
+    {
+        if (GamePhase.Gameplay == _currentGamePhase)
+        {
+            return _players[playerIndex];
+        }
+        return null;
     }
 }
