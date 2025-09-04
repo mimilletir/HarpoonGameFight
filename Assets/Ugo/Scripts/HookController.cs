@@ -16,6 +16,14 @@ public class HookController : MonoBehaviour
     private Collider2D _collider;
     private List<Collider2D> overlappingColliders = new List<Collider2D>();
     private bool CanShoot = false;
+    private int _playerIndex;
+
+    public int PlayerIndex
+    {
+        get => _playerIndex;
+        set => _playerIndex = value;
+    }
+
 
     private void Start()
     {
@@ -76,7 +84,10 @@ public class HookController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Hook triggered");
-            other.gameObject.GetComponent<PlayerController>().ResetHook();
+            if (other.gameObject.GetComponent<PlayerController>().PlayerIndex == _playerIndex)
+            {
+                other.gameObject.GetComponent<PlayerController>().ResetHook();
+            }
         }
         if(!overlappingColliders.Contains(other)) {
             overlappingColliders.Add(other);

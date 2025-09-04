@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     //Player Index (Used for Local Multiplayer)
     [SerializeField] private int _playerIndex;
+
+
     public int PlayerIndex => _playerIndex;
 
     public void Initialize(PlayerInput playerInput)
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         {
             _hookController.Initialize(_aim, _shoot);
         }
+        _hookController.PlayerIndex =  _playerIndex;
         ResetHook();
     }
 
