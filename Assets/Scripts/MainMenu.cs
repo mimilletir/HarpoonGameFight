@@ -37,7 +37,6 @@ public class MainMenu : MonoBehaviour
         }
         if (currJoinedPlayers >= _maxPlayerNumber)
         {
-            Debug.Log("Loading... Starting Game aaaa");
             GameManager.Instance.StartGame();
         }
     }
