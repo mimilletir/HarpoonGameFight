@@ -342,7 +342,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Harpoon Fighting Gamingggg \n<size=40>200k</size>"
+  m_text: Harpoon them all !
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de28cbd3abbcfb34fb5b153b04b2cb50, type: 2}
   m_sharedMaterial: {fileID: -8094184669995869546, guid: de28cbd3abbcfb34fb5b153b04b2cb50, type: 2}
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57.25
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -980,7 +980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1971326260
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _maxPlayerNumber: 2
-  _startText: {fileID: 0}
+  _startText: {fileID: 1971326259}
 --- !u!224 &1996825917 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1877759481470982255, guid: 601f5ded52ffed8439433bce704deeff, type: 3}
