@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5988030970473549752}
   - component: {fileID: 4157182863703906307}
   - component: {fileID: 7817903797059286253}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sattelite_Haltere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

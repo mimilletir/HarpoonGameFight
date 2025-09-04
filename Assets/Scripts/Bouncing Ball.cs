@@ -10,7 +10,7 @@ public class BouncingBall : MonoBehaviour
     private Vector3 lastVelocity;
     [HideInInspector] public int playerIndexMaster;
 
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.AddForce(new Vector2(9.8f*_speed, 9.8f*_speed));
