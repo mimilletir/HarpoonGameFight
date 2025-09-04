@@ -14,8 +14,8 @@ public class HookController : MonoBehaviour
     private Rigidbody2D _rbPlayer;
     private float _playerWidth;
     private Collider2D _collider;
-    public List<Collider2D> overlappingColliders = new List<Collider2D>();
-    public bool CanShoot = false;
+    private List<Collider2D> overlappingColliders = new List<Collider2D>();
+    private bool CanShoot = false;
 
     private void Start()
     {
