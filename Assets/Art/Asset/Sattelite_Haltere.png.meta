@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8b037fe066612d34abfa8e010600c328
+guid: b09d79e34c157f04cb72a326b0b08c92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4570153536982545689
-    second: Rope_0
+      213: 8171744992007736705
+    second: Sattelite_Haltere_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rope_0
+      name: Sattelite_Haltere_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 88
-        height: 670
+        width: 102
+        height: 363
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ea0923629d8390c0800000000000000
-      internalID: -4570153536982545689
+      spriteID: 18dc2b346ced76170800000000000000
+      internalID: 8171744992007736705
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rope_0: -4570153536982545689
+      Sattelite_Haltere_0: 8171744992007736705
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

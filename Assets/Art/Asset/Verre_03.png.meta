@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8b037fe066612d34abfa8e010600c328
+guid: faf7e3d45dc0f6b49a2210303e287ec2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4570153536982545689
-    second: Rope_0
+      213: 7551840181436915009
+    second: Verre_03_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rope_0
+      name: Verre_03_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 88
-        height: 670
+        width: 75
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ea0923629d8390c0800000000000000
-      internalID: -4570153536982545689
+      spriteID: 14d911732a68dc860800000000000000
+      internalID: 7551840181436915009
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rope_0: -4570153536982545689
+      Verre_03_0: 7551840181436915009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
