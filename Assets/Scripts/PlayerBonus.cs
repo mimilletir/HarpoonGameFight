@@ -45,12 +45,14 @@ public class PlayerBonus : MonoBehaviour
                     GameObject Squid = Instantiate(_squid, transform.position, Quaternion.identity);
                     Squid.GetComponent<SquidController>().playerIndexMaster = _playerController.PlayerIndex;
                     break;
-                case BonusEnum.SwapPlace:
+                /*case BonusEnum.SwapPlace:
                     PlayerController otherPlayer = GameManager.Instance.GetPlayerFromIndex(_playerController.PlayerIndex == 0 ? 1 : 0);
                     otherPlayer.ResetHook();
                     _playerController.ResetHook();
                     (otherPlayer.transform.position, transform.position) = (transform.position, otherPlayer.transform.position);
-                    break;
+                    otherPlayer.ResetHook();
+                    _playerController.ResetHook();
+                    break;*/
             }
 
             haveBonus = false;
@@ -80,6 +82,6 @@ public class PlayerBonus : MonoBehaviour
         HarpoonRebonce,
         SpeedDeBoost,
         Squid,
-        SwapPlace
+        //SwapPlace
     };
 }
