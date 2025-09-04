@@ -7,18 +7,17 @@ public class OptionButton : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private string _content;
-
-    public UnityAction OnInteracted;
+    [SerializeField] private PauseMenuInteractions _pauseMenuInteraction = PauseMenuInteractions.None;
 
     private void Awake()
     {
         _text.text = _content;
     }
 
-    public void OnInteract()
+    public PauseMenuInteractions OnInteract()
     {
-        Debug.Log("OnInteract" + gameObject.name);
-        OnInteracted?.Invoke();
+        Debug.Log("Interact with button : " + _pauseMenuInteraction);
+        return _pauseMenuInteraction;
     }
 
     public void UpdateSelection(bool bIsSelected)

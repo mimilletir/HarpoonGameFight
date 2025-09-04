@@ -1,23 +1,26 @@
 using System;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
+public enum PauseMenuInteractions
+{
+    None,
+    ResumeGame,
+    MainMenu,
+    Rules,
+}
 public class PauseMenu : MonoBehaviour
 {
     private PlayerInput _playerInput;
     [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private RulesUI _rules;
     private int _selectedButton = 0;
     [SerializeField] private float _yThreshold;
     [SerializeField] private OptionButton[] _buttons;
-    [SerializeField] private OptionButton _resumeButton;
     
     private void Start()
     {
         GameManager.Instance.PauseMenu = this;
-        _resumeButton.OnInteracted += UnpauseGame;
     }
 
     public void PauseGame(PlayerInput playerInput)
@@ -29,7 +32,7 @@ public class PauseMenu : MonoBehaviour
         InputAction moveSelection = playerInput.actions["MoveSelection"];
         InputAction closeMenu = playerInput.actions["CloseMenu"];
         playerInput.SwitchCurrentActionMap(interactAction.actionMap.name);
-        interactAction.performed += OnInteract;
+        interactAction.started += OnInteract;
         moveSelection.started += OnMoveSelection;
         closeMenu.performed += UnpauseActionPressed;
         foreach (OptionButton optionButton in _buttons)
@@ -46,10 +49,12 @@ public class PauseMenu : MonoBehaviour
         InputAction interactAction = _playerInput.actions["Interact"];
         InputAction moveSelection = _playerInput.actions["MoveSelection"];
         InputAction closeMenu = _playerInput.actions["CloseMenu"];
-        interactAction.performed -= OnInteract;
+        interactAction.started -= OnInteract;
         moveSelection.started -= OnMoveSelection;
         closeMenu.performed -= UnpauseActionPressed;
         _pauseMenu.SetActive(false);
+        _rules.gameObject.SetActive(false);
+        _rules.Close(_playerInput);
         GameManager.Instance.PauseGame(_playerInput); //Unpause Game
     }
 
@@ -80,6 +85,27 @@ public class PauseMenu : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext obj)
     {
-        _buttons[_selectedButton].OnInteract();
+        if (_rules.gameObject.activeSelf)
+        {
+            _rules.gameObject.SetActive(false);
+            return;
+        }
+        PauseMenuInteractions interaction = _buttons[_selectedButton].OnInteract();
+        switch (interaction)
+        {
+            case PauseMenuInteractions.None:
+                break;
+            case PauseMenuInteractions.ResumeGame:
+                UnpauseGame();
+                break;
+            case PauseMenuInteractions.MainMenu:
+                UnpauseGame();
+                GameManager.Instance.GoBackToMainMenu();
+                return;
+            case PauseMenuInteractions.Rules:
+                _rules.gameObject.SetActive(true);
+                _rules.Open(_playerInput);
+                break;
+        }
     }
 }
