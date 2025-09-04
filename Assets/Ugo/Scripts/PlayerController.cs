@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
     private Vector3 _offset;
+    
+    //Rope
+    private LineRenderer _lineRenderer;
+    [SerializeField] private Transform _ropeBeginPoint;
 
     #region LocalMultiplayer
 
@@ -58,6 +62,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     {
         _rbHook = _hook?.GetComponent<Rigidbody2D>();
         _rb = this.GetComponent<Rigidbody2D>();
+        _lineRenderer = GetComponent<LineRenderer>();
 
         _hookController = _hook?.GetComponent<HookController>();
         _playerBonus = GetComponent<PlayerBonus>();
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         #endregion
 
         #region Move
-
+        
         if (Vector2.Distance(_rbHook.position, this.transform.position) > 1f && _rbHook.linearVelocity == Vector2.zero
             && _rb.linearVelocity ==  Vector2.zero)
         {
@@ -107,9 +112,12 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
         #endregion
 
-        if (Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
+        //Rope
+        _lineRenderer.enabled = _hook.transform.parent is null;
+        if (_lineRenderer.enabled)
         {
-            
+            _lineRenderer.SetPosition(0, _ropeBeginPoint.position);
+            _lineRenderer.SetPosition(1, _hook.transform.position + new Vector3(0,0,1));
         }
     }
 
