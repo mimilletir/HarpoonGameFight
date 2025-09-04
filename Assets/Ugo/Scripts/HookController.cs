@@ -30,7 +30,7 @@ public class HookController : MonoBehaviour
             return;
         }
         
-        if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < _playerWidth)
+        if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
         {
             _rb.linearVelocity = _hookSpeed * _aim.ReadValue<Vector2>() * Time.fixedDeltaTime;
         }
