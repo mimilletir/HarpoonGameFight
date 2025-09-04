@@ -7,6 +7,7 @@ public class PlayerBonus : MonoBehaviour
     [SerializeField] private GameObject _bouncingBall;
     [SerializeField] private GameObject _squid;
     [SerializeField] private PowerUpUI _powerUpUI;
+    [SerializeField] private float _addedSpeedMultiplierValue = 0.2f;
     private PlayerController _playerController;
 
     public bool haveBonus = false;
@@ -33,6 +34,7 @@ public class PlayerBonus : MonoBehaviour
                     GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, Quaternion.identity);
                     break;
                 case BonusEnum.SpeedBoost:
+                    _playerController.AddSpeedMultiplier(_addedSpeedMultiplierValue);
                     break;
                 case BonusEnum.HealthUp:
                     _playerController.TakeDamage(-25f);
@@ -40,6 +42,8 @@ public class PlayerBonus : MonoBehaviour
                 case BonusEnum.HarpoonRebonce:
                     break;
                 case BonusEnum.SpeedDeBoost:
+                    PlayerController otherPlayer = GameManager.Instance.GetPlayerFromIndex(_playerController.PlayerIndex == 0 ? 1 : 0);
+                    otherPlayer.AddSpeedMultiplier(_addedSpeedMultiplierValue * -1.0f);
                     break;
                 case BonusEnum.Squid:
                     GameObject Squid = Instantiate(_squid, transform.position, Quaternion.identity);

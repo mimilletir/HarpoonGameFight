@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     InputAction _throwItem;
     [SerializeField] private GameObject _hook;
     [SerializeField] private Slider _healthBar;
-    [SerializeField] float _playerSpeed;
     [SerializeField] private float _maxLife;
 
     public float MaxLife
@@ -29,6 +28,15 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
     private Vector3 _offset;
+    
+    private float _speedMultiplier = 1.0f;
+
+    public void AddSpeedMultiplier(float addedSpeedMultiplier)
+    {
+        _speedMultiplier = Mathf.Clamp(_speedMultiplier + addedSpeedMultiplier, 0.3f, 3);
+        Debug.Log("Why the fuck, Player " + _playerIndex + "has a speedMultiplier of " + _speedMultiplier);
+        Debug.Log("Why the fuck, Value added" + addedSpeedMultiplier);
+    }
     
     //Rope
     private LineRenderer _lineRenderer;
@@ -109,7 +117,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             && _rb.linearVelocity ==  Vector2.zero)
         {
 
-            _rb.AddForce((_hook.transform.position - this.transform.position), ForceMode2D.Impulse);
+            _rb.AddForce((_hook.transform.position - this.transform.position) * _speedMultiplier, ForceMode2D.Impulse);
             //this.transform.position = Vector2.MoveTowards(this.transform.position, _rbHook.position, _playerSpeed / 100f);
         }
 
