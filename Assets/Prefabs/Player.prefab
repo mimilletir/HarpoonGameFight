@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 6655870611303848804}
   - component: {fileID: 4385978406596458330}
   - component: {fileID: 6556758324766595509}
+  - component: {fileID: 8982076454188811523}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -775,3 +776,17 @@ MonoBehaviour:
   _playerSpeed: 100
   _maxLife: 100
   _playerIndex: 0
+--- !u!114 &8982076454188811523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764990933778331175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30436fcf6402ca4badc9ec97aaa9561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBonus
+  haveBonus: 0
+  bonusName: {fileID: 0}

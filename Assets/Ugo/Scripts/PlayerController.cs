@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 {
     InputAction _aim;
     InputAction _shoot;
+    InputAction _throwItem;
     [SerializeField] private GameObject _hook;
     [SerializeField] private Slider _healthBar;
     [SerializeField] Text _hpText;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     
     private float life;
     private HookController _hookController;
+    private PlayerBonus _playerBonus;
     private Vector2 a;
     private float h = 0.0f;
     private Rigidbody2D _rbHook;
@@ -31,9 +33,14 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     {
         _aim = playerInput.actions["Aim"];
         _shoot = playerInput.actions["Shoot"];
+        _throwItem = playerInput.actions["ThrowItem"];
         if (_hookController != null)
         {
             _hookController.Initialize(_aim, _shoot);
+        }
+        if (_playerBonus != null)
+        {
+            _playerBonus.Initialize(_throwItem);
         }
     }
     
@@ -45,12 +52,17 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         _rb = this.GetComponent<Rigidbody2D>();
 
         _hookController = _hook?.GetComponent<HookController>();
+        _playerBonus = GetComponent<PlayerBonus>();
         
         life = _maxLife;
         TakeDamage(0);
         if (_hookController != null && _aim != null)
         {
             _hookController.Initialize(_aim, _shoot);
+        }
+        if (_playerBonus != null)
+        {
+            _playerBonus.Initialize(_throwItem);
         }
     }
 
