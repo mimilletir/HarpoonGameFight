@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IInputInitialize
 {
-    [SerializeField] InputAction _aim;
+    InputAction _aim;
+    InputAction _shoot;
     [SerializeField] private GameObject _hook;
     public GameObject Hook
     {
@@ -28,16 +29,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int _playerIndex;
     public int PlayerIndex => _playerIndex;
 
-    public void Initialize(InputAction aimInput, InputAction hookInput)
+    public void Initialize(PlayerInput playerInput)
     {
-        _aim = aimInput;
+        _aim = playerInput.actions["Aim"];
+        _shoot = playerInput.actions["Shoot"];
         if (_hookController != null)
         {
-            _hookController.Initialize(aimInput, hookInput);
-        }
-        else
-        {
-            Debug.LogError("No HookController found");
+            _hookController.Initialize(_aim, _shoot);
         }
     }
     
@@ -51,10 +49,15 @@ public class PlayerController : MonoBehaviour
         _hookController = _hook?.GetComponent<HookController>();
         
         TakeDamage(0);
+        if (_hookController != null && _aim != null)
+        {
+            _hookController.Initialize(_aim, _shoot);
+        }
     }
 
     private void FixedUpdate()
     {
+        if (_aim == null) return;
         #region Aim
 
         a = _aim.ReadValue<Vector2>();
