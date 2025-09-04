@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = System.Random;
+using URandom = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour, IInputInitialize
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     [SerializeField] private GameObject _hook;
     [SerializeField] private Slider _healthBar;
     [SerializeField] private float _maxLife;
+    [SerializeField] private Camera _camera;
 
     public float MaxLife
     {
@@ -143,8 +145,16 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         _hook.GetComponent<Collider2D>().isTrigger = true;
     }
 
+    [SerializeField] private Image _shatteredGlass;
+
     public void TakeDamage(float damage)
     {
+        if (damage > 0) // La fonction est aussi appelé lorsque on se soigne(valeur négative) donc on veut pas d'effet
+        {
+            StartCoroutine(ShatteredGlass());
+            StartCoroutine(CameraShake());
+        }
+        
         life -= damage;
         _healthBar.value = life / _maxLife;
         if (life <= 0)
@@ -152,7 +162,38 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             OnDie();
         }
     }
-    
+
+    private IEnumerator ShatteredGlass()
+    {
+        float t = 0f;
+
+        while (t < 2f)
+        {
+            float a = Mathf.Lerp(1f, 0f, t / 2f);
+            _shatteredGlass.color = new Color(1f, 1f, 1f, a);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        _shatteredGlass.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    private IEnumerator CameraShake()
+    {
+        Vector3 startposition = _camera.transform.position;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            Vector3 shakeOffset = URandom.insideUnitSphere * 0.1f;
+            _camera.transform.position = startposition + shakeOffset;
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        _camera.transform.position = startposition;
+    }
+
     private void OnDie()
     {
         Debug.Log("Player has been killed");

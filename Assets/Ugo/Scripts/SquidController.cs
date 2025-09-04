@@ -18,15 +18,13 @@ public class SquidController : MonoBehaviour
     private void FixedUpdate()
     {
         if (target == null)
-        {
             foreach (GameObject g in GameObject.FindGameObjectsWithTag("Player"))
-            {
-                PlayerController playerController = g.GetComponent<PlayerController>();
-                if (playerController is not null && playerController.PlayerIndex != playerIndexMaster)
-                    target = g;
-                
-            }
-        }
+                if (g.TryGetComponent<PlayerController>(out var playerController))
+                    if (playerController.PlayerIndex != playerIndexMaster)
+                    {
+                        target = g;
+                        break;
+                    }
 
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, _speed *  Time.fixedDeltaTime);
     }
