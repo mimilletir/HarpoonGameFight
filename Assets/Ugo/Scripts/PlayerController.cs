@@ -140,19 +140,24 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         _rb.linearVelocity = Vector2.zero;
         
         _hook.transform.SetParent(this.transform);
-        _hook.transform.localPosition = new Vector3(0, 3.6f, 0);
+        _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
         _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
         _hook.GetComponent<Collider2D>().isTrigger = true;
     }
 
     [SerializeField] private Image _shatteredGlass;
+    //Min Damage to have the shatteredGlass Effect
+    [SerializeField] private float _shatteredGlassDamageValue = 40.0f;
 
     public void TakeDamage(float damage)
     {
-        if (damage > 0) // La fonction est aussi appelé lorsque on se soigne(valeur négative) donc on veut pas d'effet
+        if (damage > 0) // La fonction est aussi appelï¿½ lorsque on se soigne(valeur nï¿½gative) donc on veut pas d'effet
         {
-            StartCoroutine(ShatteredGlass());
-            StartCoroutine(CameraShake());
+            if (damage > _shatteredGlassDamageValue) StartCoroutine(ShatteredGlass());
+            if (!GameManager.Instance.Settings.DisableCameraShaking)
+            {
+                StartCoroutine(CameraShake());
+            }
         }
         
         life -= damage;

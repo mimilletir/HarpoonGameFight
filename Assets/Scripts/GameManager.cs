@@ -12,6 +12,16 @@ public enum GamePhase
     VictoryScreen,
 }
 
+public struct GameSettings
+{
+    public bool DisableCameraShaking;
+
+    public GameSettings(bool bDefaultValues)
+    {
+        DisableCameraShaking = bDefaultValues;
+    }
+}
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -41,8 +51,9 @@ public class GameManager : MonoBehaviour
     //PauseMenu
     private int _lastPausePlayer = -1;
     public PauseMenu PauseMenu { get; set; }
-    
-    
+    public GameSettings Settings{ get; set; }
+
+
     public void Awake()
     {
         if (_instance != null)
@@ -52,6 +63,7 @@ public class GameManager : MonoBehaviour
         }
         _instance = this;
         DontDestroyOnLoad(this);
+        Settings = new GameSettings(false);
     }
 
     public void OnGameWon(int wonPlayer)

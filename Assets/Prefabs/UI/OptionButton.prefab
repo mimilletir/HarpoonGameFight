@@ -187,3 +187,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _text: {fileID: 8158570899416605994}
   _content: 
+  _pauseMenuInteraction: 0
