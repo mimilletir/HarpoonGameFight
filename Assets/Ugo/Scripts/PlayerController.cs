@@ -32,14 +32,25 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private Vector3 _offset;
     
     private float _speedMultiplier = 1.0f;
-
     public void AddSpeedMultiplier(float addedSpeedMultiplier)
     {
         _speedMultiplier = Mathf.Clamp(_speedMultiplier + addedSpeedMultiplier, 0.3f, 3);
-        Debug.Log("Why the fuck, Player " + _playerIndex + "has a speedMultiplier of " + _speedMultiplier);
-        Debug.Log("Why the fuck, Value added" + addedSpeedMultiplier);
     }
-    
+
+    public void NextHarpoonWillBounce()
+    {
+        _hookController.WillBounce();
+    }
+    private bool _bHasBounceTarget = false;
+    private Vector3 _bouncePosition;
+    public void SetBounceTarget(Vector3 transformPosition)
+    {
+        _bHasBounceTarget = true;
+        _bouncePosition = transformPosition;
+        _bounceSpeedMultiplier = 2.0f;
+    }
+    private float _bounceSpeedMultiplier = 1.0f;
+
     //Rope
     private LineRenderer _lineRenderer;
     [SerializeField] private Transform _ropeBeginPoint;
@@ -110,17 +121,31 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             //_hook.transform.rotation = Quaternion.Euler(0, 0, h);
 
         }
+        else if (_rb.linearVelocity != Vector2.zero)
+        {
+            //Rotates towards Motion
+            a = _rb.linearVelocity.normalized;
+            h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
+            transform.rotation = Quaternion.Euler(0, 0, h);
+        }
 
         #endregion
 
         #region Move
+
+        Vector3 targetPosition = _bHasBounceTarget ? _bouncePosition : _rbHook.position;
         
-        if (Vector2.Distance(_rbHook.position, this.transform.position) > 1f && _rbHook.linearVelocity == Vector2.zero
+        if (Vector2.Distance(targetPosition, this.transform.position) > 1f && _rbHook.linearVelocity == Vector2.zero
             && _rb.linearVelocity ==  Vector2.zero)
         {
-
-            _rb.AddForce((_hook.transform.position - this.transform.position) * _speedMultiplier, ForceMode2D.Impulse);
+            _rb.AddForce(((_bHasBounceTarget ? _bouncePosition : _hook.transform.position) - this.transform.position) * (_speedMultiplier * _bounceSpeedMultiplier), ForceMode2D.Impulse);
             //this.transform.position = Vector2.MoveTowards(this.transform.position, _rbHook.position, _playerSpeed / 100f);
+        }
+        if (_bHasBounceTarget && _rb.linearVelocity != Vector2.zero && Vector2.Distance(targetPosition, this.transform.position) <= 0.1f)
+        {
+            Debug.Log("Well it seems i have reached the Bounce Target !!!");
+            _rb.linearVelocity = Vector2.zero;
+            _bHasBounceTarget = false;
         }
 
         #endregion
@@ -130,7 +155,17 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         if (_lineRenderer.enabled)
         {
             _lineRenderer.SetPosition(0, _ropeBeginPoint.position);
-            _lineRenderer.SetPosition(1, _hook.transform.position + new Vector3(0,0,1));
+            if (_bHasBounceTarget)
+            {
+                _lineRenderer.positionCount = 3;
+                _lineRenderer.SetPosition(1, _bouncePosition + new Vector3(0,0,1));
+                _lineRenderer.SetPosition(2, _hook.transform.position + new Vector3(0,0,1));
+            }
+            else
+            {
+                _lineRenderer.positionCount = 2;
+                _lineRenderer.SetPosition(1, _hook.transform.position + new Vector3(0,0,1));
+            }
         }
     }
 
@@ -138,6 +173,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     {
         Debug.Log("Reset Hook");
         _rb.linearVelocity = Vector2.zero;
+        _bounceSpeedMultiplier = 1.0f;
         
         _hook.transform.SetParent(this.transform);
         _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
@@ -241,4 +277,5 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             }
         }
     }
+
 }

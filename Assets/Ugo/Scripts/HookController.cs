@@ -18,6 +18,10 @@ public class HookController : MonoBehaviour
     private bool CanShoot = false;
     private int _playerIndex;
 
+    private bool _bWillBounce = false;
+    private Vector2 _velocityOnShoot;
+    public void WillBounce() => _bWillBounce = true;
+
     public int PlayerIndex
     {
         get => _playerIndex;
@@ -42,6 +46,13 @@ public class HookController : MonoBehaviour
             Debug.Log("Not binded yet");
             return;
         }
+        if (_rb.linearVelocity != Vector2.zero)
+        {
+            //Rotates towards Motion
+            Vector2 a = _rb.linearVelocity.normalized;
+            float h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
+            transform.rotation = Quaternion.Euler(0, 0, h);
+        }
         
         if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
         {
@@ -56,7 +67,8 @@ public class HookController : MonoBehaviour
             if (CanShoot)
             {
                 this.transform.parent = null;
-                _rb.linearVelocity = _hookSpeed * _aim.ReadValue<Vector2>() * Time.fixedDeltaTime;
+                _velocityOnShoot = _aim.ReadValue<Vector2>() * (_hookSpeed * Time.fixedDeltaTime);
+                _rb.linearVelocity = _velocityOnShoot;
                 _collider.isTrigger = false;
             }
         }
@@ -68,7 +80,16 @@ public class HookController : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player"))
         {
-            _rb.linearVelocity = Vector2.zero;
+            if (!_bWillBounce)
+            {
+                _rb.linearVelocity = Vector2.zero;
+            }
+            else
+            {
+                _rb.linearVelocity = Vector2.Reflect(_velocityOnShoot, other.contacts[0].normal);
+                _player.SetBounceTarget(transform.position);
+                _bWillBounce = false;
+            }
         }
     }
 

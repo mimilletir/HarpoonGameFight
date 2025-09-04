@@ -40,6 +40,7 @@ public class PlayerBonus : MonoBehaviour
                     _playerController.TakeDamage(-25f);
                     break;
                 case BonusEnum.HarpoonRebonce:
+                    _playerController.NextHarpoonWillBounce();
                     break;
                 case BonusEnum.SpeedDeBoost:
                     PlayerController otherPlayer = GameManager.Instance.GetPlayerFromIndex(_playerController.PlayerIndex == 0 ? 1 : 0);
