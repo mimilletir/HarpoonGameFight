@@ -31,11 +31,7 @@ public class SquidController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
-            playerController.life -= _damage;
-            if (playerController.life <= 0)
-            {
-                playerController.OnDie();
-            }
+            playerController.TakeDamage(_damage);
         }
     }
 

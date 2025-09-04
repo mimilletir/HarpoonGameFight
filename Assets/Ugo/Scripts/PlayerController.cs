@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class PlayerController : MonoBehaviour
     {
         get => _hook;
     }
-
-    private float _playerSpeed;
+    [SerializeField] Text _hpText;
+    [SerializeField] float _playerSpeed;
+    
+    private float life = 100f;
     private HookController _hookController;
     private Vector2 a;
     private float h = 0.0f;
@@ -20,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
 
     #region LocalMultiplayer
-    public float life = 100f;
 
     //Player Index (Used for Local Multiplayer)
     [SerializeField] private int _playerIndex;
@@ -47,6 +49,8 @@ public class PlayerController : MonoBehaviour
         _rb = this.GetComponent<Rigidbody2D>();
 
         _hookController = _hook?.GetComponent<HookController>();
+        
+        TakeDamage(0);
     }
 
     private void FixedUpdate()
@@ -73,7 +77,19 @@ public class PlayerController : MonoBehaviour
 
         #endregion
     }
-    public void OnDie()
+
+    public void TakeDamage(float damage)
+    {
+        life -= damage;
+        _hpText.text = life.ToString();
+        Debug.Log(life);
+        if (life <= 0)
+        {
+            OnDie();
+        }
+    }
+    
+    private void OnDie()
     {
         Debug.Log("Player has been killed");
         Destroy(_hook);
