@@ -24,7 +24,7 @@ public class SquidController : MonoBehaviour
         yield return new WaitForSeconds(_lifeTime);
         Destroy(gameObject);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log(other.gameObject.tag);
@@ -32,6 +32,7 @@ public class SquidController : MonoBehaviour
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.TakeDamage(_damage);
+            Destroy(this.gameObject);
         }
     }
 

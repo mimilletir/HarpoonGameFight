@@ -9,14 +9,12 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     InputAction _aim;
     InputAction _shoot;
     [SerializeField] private GameObject _hook;
-    public GameObject Hook
-    {
-        get => _hook;
-    }
+    [SerializeField] private Slider _healthBar;
     [SerializeField] Text _hpText;
     [SerializeField] float _playerSpeed;
+    [SerializeField] private float _maxLife;
     
-    private float life = 100f;
+    private float life;
     private HookController _hookController;
     private Vector2 a;
     private float h = 0.0f;
@@ -48,6 +46,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
         _hookController = _hook?.GetComponent<HookController>();
         
+        life = _maxLife;
         TakeDamage(0);
         if (_hookController != null && _aim != null)
         {
@@ -73,7 +72,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
         #region Move
 
-        if (Vector2.Distance(_rbHook.position, this.transform.position) > 0.2f && _rbHook.linearVelocity == Vector2.zero)
+        if (Vector2.Distance(_rbHook.position, this.transform.position) > 0.5f && _rbHook.linearVelocity == Vector2.zero)
         {
             this.transform.position = Vector2.MoveTowards(this.transform.position, _rbHook.position, _playerSpeed / 100f);
         }
@@ -84,6 +83,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     public void TakeDamage(float damage)
     {
         life -= damage;
+        _healthBar.value = life / _maxLife;
         _hpText.text = life.ToString();
         Debug.Log(life);
         if (life <= 0)
