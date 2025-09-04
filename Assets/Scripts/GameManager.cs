@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public enum GamePhase
@@ -19,15 +20,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string _gameplaySceneName;
     [SerializeField] private string _mainMenuSceneName;
     [SerializeField] private string _victorySceneName;
+    private GamePhase _currentGamePhase = GamePhase.MainMenu;
 
     private bool bIsLoadingScene = false;
     
     //Called when Scene is changed 
     public UnityAction<GamePhase> OnGamePhaseChanged;
 
+    //Winning
     private int _wonPlayer = -1;
     public int WonPlayer => _wonPlayer;
 
+    //PauseMenu
+    private int _lastPausePlayer = -1;
+    public PauseMenu PauseMenu { get; set; }
+    
+    
     public void Awake()
     {
         if (_instance != null)
@@ -63,6 +71,7 @@ public class GameManager : MonoBehaviour
             bIsLoadingScene = true;
             Debug.Log("Loading Game Phase: " + gamePhase);
             yield return SceneManager.LoadSceneAsync(sceneName);
+            _currentGamePhase = gamePhase;
             OnGamePhaseChanged?.Invoke(gamePhase);
             bIsLoadingScene = false;
             /*if (gamePhase == GamePhase.Gameplay)
@@ -70,6 +79,28 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(3f);
                 OnGameWon(0);
             }*/
+        }
+    }
+
+    public void PauseGame(PlayerInput playerInput)
+    {
+        if (_currentGamePhase == GamePhase.Gameplay)
+        {
+            if (Time.timeScale == 0)
+            {
+                if (_lastPausePlayer != playerInput.playerIndex) return;
+                //Unpause Game
+                Time.timeScale = 1;
+                playerInput.SwitchCurrentActionMap(playerInput.defaultActionMap);
+            }
+            else
+            {
+                Debug.Log("Paused Game");
+                //Pause Game
+                _lastPausePlayer = playerInput.playerIndex;
+                PauseMenu.PauseGame(playerInput);
+                Time.timeScale = 0;
+            }
         }
     }
 }
