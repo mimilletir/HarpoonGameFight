@@ -33,7 +33,6 @@ public class SquidController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Player"))
         {
             if (other.gameObject.GetComponent<PlayerController>().PlayerIndex == playerIndexMaster)

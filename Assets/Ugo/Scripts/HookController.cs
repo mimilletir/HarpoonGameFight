@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,12 +13,24 @@ public class HookController : MonoBehaviour
     private Rigidbody2D _rb;
     private Rigidbody2D _rbPlayer;
     private float _playerWidth;
+    private Collider2D _collider;
+    private List<Collider2D> overlappingColliders = new List<Collider2D>();
+    private bool CanShoot = false;
+    private int _playerIndex;
+
+    public int PlayerIndex
+    {
+        get => _playerIndex;
+        set => _playerIndex = value;
+    }
+
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _rbPlayer = _player.gameObject.GetComponent<Rigidbody2D>();
         _playerWidth = _player.gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
+        _collider = GetComponent<Collider2D>();
     }
 
     private void FixedUpdate()
@@ -32,7 +45,20 @@ public class HookController : MonoBehaviour
         
         if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
         {
-            _rb.linearVelocity = _hookSpeed * _aim.ReadValue<Vector2>() * Time.fixedDeltaTime;
+            CanShoot = true;
+            foreach (Collider2D collider in overlappingColliders)
+            {
+                if (collider.gameObject.layer == LayerMask.NameToLayer("Environnement"))
+                {
+                    CanShoot =  false;
+                }
+            }
+            if (CanShoot)
+            {
+                this.transform.parent = null;
+                _rb.linearVelocity = _hookSpeed * _aim.ReadValue<Vector2>() * Time.fixedDeltaTime;
+                _collider.isTrigger = false;
+            }
         }
 
         #endregion
@@ -51,5 +77,26 @@ public class HookController : MonoBehaviour
         Debug.Log("Initializing hook");
         _aim = aimInput;
         _shoot = hookInput;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Hook triggered");
+            if (other.gameObject.GetComponent<PlayerController>().PlayerIndex == _playerIndex)
+            {
+                other.gameObject.GetComponent<PlayerController>().ResetHook();
+            }
+        }
+        if(!overlappingColliders.Contains(other)) {
+            overlappingColliders.Add(other);
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) {
+        if(overlappingColliders.Contains(other)) {
+            overlappingColliders.Remove(other);
+        }
     }
 }
