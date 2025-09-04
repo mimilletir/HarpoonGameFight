@@ -4,8 +4,17 @@ using UnityEngine.InputSystem;
 public class PlayerBonus : MonoBehaviour
 {
     private InputAction _throwItem;
+    [SerializeField] private GameObject _bouncingBall;
+    [SerializeField] private GameObject _squid;
+    private PlayerController _playerController;
+
     public bool haveBonus = false;
-    public GameObject bonusName;
+    public BonusEnum _bonus;
+
+    private void Start()
+    {
+        _playerController = GetComponent<PlayerController>();
+    }
 
     public void FixedUpdate()
     {
@@ -17,15 +26,37 @@ public class PlayerBonus : MonoBehaviour
 
         if (_throwItem.IsPressed() && haveBonus)
         {
-            // Do something
+            switch (_bonus)
+            {
+                case BonusEnum.Sun:
+                    break;
+                case BonusEnum.BouncingBall:
+                    GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, Quaternion.identity);
+                    break;
+                case BonusEnum.SpeedBoost:
+                    break;
+                case BonusEnum.HealthUp:
+                    _playerController.TakeDamage(-25f);
+                    break;
+                case BonusEnum.HarpoonRebonce:
+                    break;
+                case BonusEnum.SpeedDeBoost:
+                    break;
+                case BonusEnum.Squid:
+                    GameObject Squid = Instantiate(_squid, transform.position, Quaternion.identity);
+                    break;
+                case BonusEnum.SwapPlace:
+                    break;
+            }
+
             haveBonus = false;
         }
     }
 
-    public void OnBonusCollected(GameObject bonus)
+    public void OnBonusCollected(BonusEnum bonus)
     {
         haveBonus = true;
-        bonusName = bonus;
+        _bonus = bonus;
     }
 
     public void OnBonusUsed()
@@ -40,4 +71,16 @@ public class PlayerBonus : MonoBehaviour
         Debug.Log("Initializing throwItem");
         _throwItem = throwItem;
     }
+
+    public enum BonusEnum
+    {
+        Sun,
+        BouncingBall,
+        SpeedBoost,
+        HealthUp,
+        HarpoonRebonce,
+        SpeedDeBoost,
+        Squid,
+        SwapPlace
+    };
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 public class BonusSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject bonusPrefab;
-    [SerializeField] private List<GameObject> bonusList;
     [SerializeField] private List<Vector2> spawnPoint;
-    [SerializeField] private float spawnInterval = 15;
+    [SerializeField] private float spawnInterval = 10;
 
     void Start()
     {
@@ -18,7 +17,6 @@ public class BonusSpawner : MonoBehaviour
         Vector2 spawnPos = spawnPoint[Random.Range(0, spawnPoint.Count)];
 
         GameObject newBonus = Instantiate(bonusPrefab, spawnPos, Quaternion.identity);
-        newBonus.GetComponent<Bonus>().bonusList = bonusList;
     }
 
     void OnDrawGizmos()

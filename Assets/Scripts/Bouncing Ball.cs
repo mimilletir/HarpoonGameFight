@@ -12,7 +12,7 @@ public class BouncingBall : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.AddForce(new Vector2(_speed, _speed));
+        _rb.AddForce(new Vector2(9.8f*_speed, 9.8f*_speed));
     }
 
     void Update()
