@@ -86,6 +86,11 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         }
 
         #endregion
+
+        if (Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
+        {
+            _rb.linearVelocity = Vector2.zero;
+        }
     }
 
     public void TakeDamage(float damage)
@@ -109,25 +114,19 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Hook"))
-        {
-            Debug.Log("Player has been hit hook");
-            _rb.linearVelocity = Vector2.zero;
-        }
         if (other.CompareTag("Player"))
         {
             
             PlayerController player = other.gameObject.GetComponent<PlayerController>();
             Rigidbody2D rbOther = other.gameObject.GetComponent<Rigidbody2D>();
-            Debug.Log(_rb.linearVelocity.magnitude + " / " + rbOther.linearVelocity.magnitude);
             if (_rb.linearVelocity.magnitude > rbOther.linearVelocity.magnitude)
             {
-                Debug.Log("2");
-                player.TakeDamage(_rb.linearVelocity.normalized.magnitude /* player.MaxLife*/);
+                Debug.Log(_rb.linearVelocity.normalized.magnitude);
+                player.TakeDamage(_rb.linearVelocity.magnitude /* player.MaxLife*/);
             } else if (_rb.linearVelocity.magnitude < rbOther.linearVelocity.magnitude)
             {
                 Debug.Log("3");
-                TakeDamage(rbOther.linearVelocity.magnitude * _maxLife);
+                TakeDamage(rbOther.linearVelocity.magnitude);
             }
             else
             {
