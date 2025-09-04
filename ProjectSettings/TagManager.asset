@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlayerInputHandler
+  - Hook
   layers:
   - Default
   - TransparentFX

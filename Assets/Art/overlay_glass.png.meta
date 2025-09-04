@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9677c43ae21177e47a2658f5bbf142ca
+guid: dd43a4a9f1c38a9448ed8bbb6fda952a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2517906432893166577
-    second: Pilote_Jaune_0
+      213: 6311683952049250297
+    second: overlay_glass_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pilote_Jaune_0
+      name: overlay_glass_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f3a44e6f8661f220800000000000000
-      internalID: 2517906432893166577
+      spriteID: 9ffdd681d1b979750800000000000000
+      internalID: 6311683952049250297
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pilote_Jaune_0: 2517906432893166577
+      overlay_glass_0: 6311683952049250297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
