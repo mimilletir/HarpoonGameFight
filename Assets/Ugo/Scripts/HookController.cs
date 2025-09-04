@@ -17,7 +17,7 @@ public class HookController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _rbPlayer = _player.gameObject.GetComponent<Rigidbody2D>();
-        _playerWidth = _player.gameObject.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        _playerWidth = _player.gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     private void FixedUpdate()
