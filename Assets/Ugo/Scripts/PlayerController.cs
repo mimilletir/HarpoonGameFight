@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private float h = 0.0f;
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
+    private Vector3 _offset;
 
     #region LocalMultiplayer
 
@@ -51,25 +52,29 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
         _hookController = _hook?.GetComponent<HookController>();
         
+        
         life = _maxLife;
         TakeDamage(0);
         if (_hookController != null && _aim != null)
         {
             _hookController.Initialize(_aim, _shoot);
         }
+        ResetHook();
     }
 
     private void FixedUpdate()
     {
         if (_aim == null) return;
+        
         #region Aim
 
         a = _aim.ReadValue<Vector2>();
-        if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero)
+        if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero && Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
         {
+            Debug.Log(transform.parent.name);
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
-
-            _hook.transform.rotation = Quaternion.Euler(0, 0, h);
+            this.transform.rotation = Quaternion.Euler(0, 0, h);
+            //_hook.transform.rotation = Quaternion.Euler(0, 0, h);
 
         }
 
@@ -89,8 +94,19 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
         if (Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
         {
-            _rb.linearVelocity = Vector2.zero;
+            
         }
+    }
+
+    public void ResetHook()
+    {
+        Debug.Log("Reset Hook");
+        _rb.linearVelocity = Vector2.zero;
+        
+        _hook.transform.SetParent(this.transform);
+        _hook.transform.localPosition = new Vector3(0, 3.6f, 0);
+        _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        _hook.GetComponent<Collider2D>().isTrigger = true;
     }
 
     public void TakeDamage(float damage)

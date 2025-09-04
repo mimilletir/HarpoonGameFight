@@ -25,9 +25,8 @@ public class SquidController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();

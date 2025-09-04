@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7091030464880231312}
   - component: {fileID: 1131979280764101774}
-  - component: {fileID: 3060149984789476527}
   - component: {fileID: 113862157135719983}
   - component: {fileID: 4737123762655759906}
+  - component: {fileID: 3060149984789476527}
   m_Layer: 0
   m_Name: Squid
   m_TagString: Untagged
@@ -93,21 +93,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3060149984789476527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6711383664662341254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe0669b8ac25b24db3b88a1d6ba41ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SquidController
-  _lifeTime: 50
-  _speed: 3
-  _damage: 50
 --- !u!58 &113862157135719983
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,3 +156,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3060149984789476527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6711383664662341254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe0669b8ac25b24db3b88a1d6ba41ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SquidController
+  _lifeTime: 50
+  _speed: 3
+  _damage: 50
