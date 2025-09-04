@@ -6,6 +6,7 @@ public class PlayerBonus : MonoBehaviour
     private InputAction _throwItem;
     [SerializeField] private GameObject _bouncingBall;
     [SerializeField] private GameObject _squid;
+    [SerializeField] private PowerUpUI _powerUpUI;
     private PlayerController _playerController;
 
     public bool haveBonus = false;
@@ -28,8 +29,6 @@ public class PlayerBonus : MonoBehaviour
         {
             switch (_bonus)
             {
-                case BonusEnum.Sun:
-                    break;
                 case BonusEnum.BouncingBall:
                     GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, Quaternion.identity);
                     break;
@@ -51,6 +50,7 @@ public class PlayerBonus : MonoBehaviour
             }
 
             haveBonus = false;
+            _powerUpUI.UpdateUI(BonusEnum.None);
         }
     }
 
@@ -58,13 +58,7 @@ public class PlayerBonus : MonoBehaviour
     {
         haveBonus = true;
         _bonus = bonus;
-    }
-
-    public void OnBonusUsed()
-    {
-        if (!haveBonus) return;
-
-        haveBonus = false;
+        _powerUpUI.UpdateUI(bonus);
     }
 
     public void Initialize(InputAction throwItem)
@@ -75,7 +69,7 @@ public class PlayerBonus : MonoBehaviour
 
     public enum BonusEnum
     {
-        Sun,
+        None = 0,
         BouncingBall,
         SpeedBoost,
         HealthUp,
