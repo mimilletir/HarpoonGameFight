@@ -28,6 +28,8 @@ public class HookController : MonoBehaviour
         {
             Debug.Log("Not binded yet");
             return;
+            _rb.linearVelocity = _hookSpeed * _aim.ReadValue<Vector2>() * Time.fixedDeltaTime;
+            // _rb.AddForce(_hookSpeed * _aim.action.ReadValue<Vector2>().normalized, ForceMode2D.Force);
         }
         
         if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < _playerWidth)

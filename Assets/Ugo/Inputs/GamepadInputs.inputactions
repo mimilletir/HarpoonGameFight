@@ -66,7 +66,7 @@
             "id": "3e71977f-6af0-4f89-9353-7b91b6ea3cc2",
             "actions": [
                 {
-                    "name": "Join",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "356586c3-6ad1-4913-b38d-5a0e8ae487e9",
                     "expectedControlType": "",
@@ -83,7 +83,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Join",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
