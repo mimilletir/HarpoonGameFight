@@ -7,6 +7,7 @@ public enum PauseMenuInteractions
     None,
     ResumeGame,
     MainMenu,
+    DisableScreenShake,
     Rules,
 }
 public class PauseMenu : MonoBehaviour
@@ -106,6 +107,13 @@ public class PauseMenu : MonoBehaviour
                 _rules.gameObject.SetActive(true);
                 _rules.Open(_playerInput);
                 break;
+            case PauseMenuInteractions.DisableScreenShake:
+                GameSettings settings = GameManager.Instance.Settings;
+                settings.DisableCameraShaking = !settings.DisableCameraShaking;
+                GameManager.Instance.Settings = settings;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 }

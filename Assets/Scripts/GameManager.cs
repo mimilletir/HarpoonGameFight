@@ -12,6 +12,16 @@ public enum GamePhase
     VictoryScreen,
 }
 
+public struct GameSettings
+{
+    public bool DisableCameraShaking;
+
+    public GameSettings(bool bDefaultValues)
+    {
+        DisableCameraShaking = bDefaultValues;
+    }
+}
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
@@ -21,6 +31,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string _mainMenuSceneName;
     [SerializeField] private string _victorySceneName;
     private GamePhase _currentGamePhase = GamePhase.MainMenu;
+
+    private PlayerController[] _players = new PlayerController[2];
+
+    public void GivePlayerReference(PlayerController player)
+    {
+        _players[player.PlayerIndex] = player;
+    }
 
     private bool bIsLoadingScene = false;
     
@@ -34,8 +51,9 @@ public class GameManager : MonoBehaviour
     //PauseMenu
     private int _lastPausePlayer = -1;
     public PauseMenu PauseMenu { get; set; }
-    
-    
+    public GameSettings Settings{ get; set; }
+
+
     public void Awake()
     {
         if (_instance != null)
@@ -45,6 +63,7 @@ public class GameManager : MonoBehaviour
         }
         _instance = this;
         DontDestroyOnLoad(this);
+        Settings = new GameSettings(false);
     }
 
     public void OnGameWon(int wonPlayer)
@@ -73,6 +92,7 @@ public class GameManager : MonoBehaviour
             yield return SceneManager.LoadSceneAsync(sceneName);
             _currentGamePhase = gamePhase;
             OnGamePhaseChanged?.Invoke(gamePhase);
+            _players = new PlayerController[2];
             bIsLoadingScene = false;
             /*if (gamePhase == GamePhase.Gameplay)
             {
@@ -102,5 +122,14 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
+    }
+
+    public PlayerController GetPlayerFromIndex(int playerIndex)
+    {
+        if (GamePhase.Gameplay == _currentGamePhase)
+        {
+            return _players[playerIndex];
+        }
+        return null;
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5173460974200334074}
   - component: {fileID: 8799462428611857693}
   - component: {fileID: 1586972065242600419}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Satellite Rond
   m_TagString: Untagged
   m_Icon: {fileID: 0}

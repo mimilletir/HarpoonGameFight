@@ -1,15 +1,17 @@
+using System;
 using UnityEngine;
+using static PlayerBonus;
 
 public class Bonus : MonoBehaviour
 {
-    public string bonusName;
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null) {
             if (collision.CompareTag("Player"))
             {
-                collision.gameObject.GetComponent<PlayerBonus>().OnBonusCollected(bonusName);
+                var values = Enum.GetValues(typeof(BonusEnum));
+                int random = UnityEngine.Random.Range(1, values.Length);
+                collision.gameObject.GetComponent<PlayerBonus>().OnBonusCollected((BonusEnum)values.GetValue(random));
                 Destroy(gameObject);
             }
         }
