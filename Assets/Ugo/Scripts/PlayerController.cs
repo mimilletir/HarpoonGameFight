@@ -121,8 +121,14 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero && Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
-            this.transform.rotation = Quaternion.Euler(0, 0, h);
-            //_hook.transform.rotation = Quaternion.Euler(0, 0, h);
+            
+            
+            
+//            this.transform.rotation = Quaternion.Euler(0, 0, h);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, h), 0.2f);
+            
+            
+            
 
         }
         else if (_rb.linearVelocity != Vector2.zero)
