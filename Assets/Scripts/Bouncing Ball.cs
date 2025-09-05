@@ -50,7 +50,6 @@ public class BouncingBall : MonoBehaviour
                 return;
 
             SoundManager.Instance.UseSound(12); //Asteroid Dmg
-            collision.gameObject.GetComponent<PlayerHealth>().OnTakeDamage(_damage);
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(_damage);
             Destroy(gameObject);
         }

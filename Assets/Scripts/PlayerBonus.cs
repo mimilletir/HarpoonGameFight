@@ -39,7 +39,6 @@ public class PlayerBonus : MonoBehaviour
                     BouncingBall.GetComponent<BouncingBall>()._a =_playerController.GetComponent<PlayerController>().a;
                     BouncingBall.GetComponent<BouncingBall>().playerIndexMaster = _playerController.PlayerIndex;
                     SoundManager.Instance.UseSound(8); //Asteroid shot
-                    GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, Quaternion.identity);
                     break;
                 case BonusEnum.SpeedBoost:
                     _playerController.AddSpeedMultiplier(_addedSpeedMultiplierValue);
