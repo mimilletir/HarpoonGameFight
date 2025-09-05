@@ -207,8 +207,14 @@ MonoBehaviour:
   _hook: {fileID: 9101874373307651695}
   _healthBar: {fileID: 0}
   _maxLife: 100
+  _camera: {fileID: 0}
+  _damageFeedbackPrefabs:
+  - {fileID: 1194530121119937591, guid: d5a7047be389d924e8ea108bc2676f27, type: 3}
+  - {fileID: 125493069496498009, guid: 985f9b71344901f42a61feb85c4097c6, type: 3}
   _ropeBeginPoint: {fileID: 6110580953916828486}
   _playerIndex: 1
+  _shatteredGlass: {fileID: 0}
+  _shatteredGlassDamageValue: 40
 --- !u!114 &7638319055325123158
 MonoBehaviour:
   m_ObjectHideFlags: 0

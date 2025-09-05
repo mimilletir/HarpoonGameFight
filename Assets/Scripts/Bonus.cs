@@ -11,7 +11,7 @@ public class Bonus : MonoBehaviour
             {
                 var values = Enum.GetValues(typeof(BonusEnum));
                 int random = UnityEngine.Random.Range(1, values.Length);
-                collision.gameObject.GetComponent<PlayerBonus>().OnBonusCollected(BonusEnum.HarpoonRebonce /*(BonusEnum)values.GetValue(random)*/);
+                collision.gameObject.GetComponent<PlayerBonus>().OnBonusCollected((BonusEnum)values.GetValue(random));
                 Destroy(gameObject);
             }
         }

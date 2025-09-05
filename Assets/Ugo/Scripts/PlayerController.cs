@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     [SerializeField] private Slider _healthBar;
     [SerializeField] private float _maxLife;
     [SerializeField] private Camera _camera;
+    
+    
 
     public float MaxLife
     {
@@ -30,6 +32,9 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
     private Vector3 _offset;
+    
+    [Header("Feedback")]
+    [SerializeField] private GameObject[] _damageFeedbackPrefabs;
     
     private float _speedMultiplier = 1.0f;
     public void AddSpeedMultiplier(float addedSpeedMultiplier)
@@ -189,6 +194,10 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     {
         if (damage > 0) // La fonction est aussi appel� lorsque on se soigne(valeur n�gative) donc on veut pas d'effet
         {
+            foreach (GameObject damageFeedback in _damageFeedbackPrefabs)
+            {
+                Instantiate(damageFeedback, transform.position, Quaternion.identity);
+            }
             if (damage > _shatteredGlassDamageValue) StartCoroutine(ShatteredGlass());
             if (!GameManager.Instance.Settings.DisableCameraShaking)
             {
@@ -196,7 +205,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             }
         }
         
-        life -= damage;
+        life = Mathf.Clamp(life - damage, 0, _maxLife);
         _healthBar.value = life / _maxLife;
         if (life <= 0)
         {
