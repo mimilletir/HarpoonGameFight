@@ -31,6 +31,7 @@ public class PlayerBonus : MonoBehaviour
             switch (_bonus)
             {
                 case BonusEnum.BouncingBall:
+                    SoundManager.Instance.UseSound(8); //Asteroid shot
                     GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, Quaternion.identity);
                     break;
                 case BonusEnum.SpeedBoost:
@@ -48,6 +49,7 @@ public class PlayerBonus : MonoBehaviour
                     otherPlayer.AddSpeedMultiplier(_addedSpeedMultiplierValue * -1.0f);
                     break;
                 case BonusEnum.Squid:
+                    SoundManager.Instance.UseSound(9); //Star shot
                     GameObject Squid = Instantiate(_squid, transform.position, Quaternion.identity);
                     Squid.GetComponent<SquidController>().playerIndexMaster = _playerController.PlayerIndex;
                     break;

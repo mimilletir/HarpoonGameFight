@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         a = _aim.ReadValue<Vector2>();
         if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero && Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
         {
-            Debug.Log(transform.parent.name);
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
             this.transform.rotation = Quaternion.Euler(0, 0, h);
             //_hook.transform.rotation = Quaternion.Euler(0, 0, h);
@@ -143,6 +142,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         if (Vector2.Distance(targetPosition, this.transform.position) > 1f && _rbHook.linearVelocity == Vector2.zero
             && _rb.linearVelocity ==  Vector2.zero)
         {
+            SoundManager.Instance.UseSound(5); //HarpoonGlide
             _rb.AddForce(((_bHasBounceTarget ? _bouncePosition : _hook.transform.position) - this.transform.position) * (_speedMultiplier * _bounceSpeedMultiplier), ForceMode2D.Impulse);
             //this.transform.position = Vector2.MoveTowards(this.transform.position, _rbHook.position, _playerSpeed / 100f);
         }
@@ -177,6 +177,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     public void ResetHook()
     {
         Debug.Log("Reset Hook");
+        SoundManager.Instance.UseSound(6); //HarpoonReset
         _rb.linearVelocity = Vector2.zero;
         _bounceSpeedMultiplier = 1.0f;
         
@@ -194,6 +195,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     {
         if (damage > 0) // La fonction est aussi appel� lorsque on se soigne(valeur n�gative) donc on veut pas d'effet
         {
+            SoundManager.Instance.UseSound(10); //Player Dmg
             foreach (GameObject damageFeedback in _damageFeedbackPrefabs)
             {
                 Instantiate(damageFeedback, transform.position, Quaternion.identity);
