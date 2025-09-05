@@ -1,28 +1,22 @@
 fileFormatVersion: 2
-guid: 35a3a92ab2e93c047b44bb7654525b4d
+guid: 2468aaebf5a2c334095b9c996aef0879
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4924924019111008522
-    second: bns[Boost vitesse]]_0
+      213: 2582122848614462125
+    second: bns_switch_0
   - first:
-      213: 1516000678779600871
-    second: bns[Boost vitesse]]_1
+      213: 3884248853934967539
+    second: bns_switch_1
   - first:
-      213: 6176977187116448036
-    second: bns[Boost vitesse]]_2
+      213: 4681847323306992894
+    second: bns_switch_2
   - first:
-      213: -2298199584693619186
-    second: bns[Boost vitesse]]_3
+      213: -4345842342804671666
+    second: bns_switch_3
   - first:
-      213: -5507705423687734432
-    second: bns[Boost vitesse]]_4
-  - first:
-      213: -6232533487385649946
-    second: bns[Boost vitesse]]_5
-  - first:
-      213: -7747855550827996127
-    second: bns[Boost vitesse]]_6
+      213: 6050260541331666624
+    second: bns_switch_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +87,7 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bns[Boost vitesse]]_0
+      name: bns_switch_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 52
-        width: 62
-        height: 71
+        x: 212
+        y: 201
+        width: 90
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f6691fa2b727abb0800000000000000
-      internalID: -4924924019111008522
+      spriteID: da2b516dc0b85d320800000000000000
+      internalID: 2582122848614462125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[Boost vitesse]]_1
+      name: bns_switch_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 4
-        width: 73
-        height: 84
+        x: 237
+        y: 282
+        width: 109
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7efb8e1d59ae90510800000000000000
-      internalID: 1516000678779600871
+      spriteID: 3fa0306c0cf97e530800000000000000
+      internalID: 3884248853934967539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[Boost vitesse]]_2
+      name: bns_switch_2
       rect:
         serializedVersion: 2
-        x: 44
-        y: 55
-        width: 43
-        height: 49
+        x: 312
+        y: 271
+        width: 12
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 42974cf460809b550800000000000000
-      internalID: 6176977187116448036
+      spriteID: ef4a356c55349f040800000000000000
+      internalID: 4681847323306992894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[Boost vitesse]]_3
+      name: bns_switch_3
       rect:
         serializedVersion: 2
-        x: 78
-        y: 83
-        width: 95
-        height: 106
+        x: 188
+        y: 231
+        width: 12
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e06f26377a72b10e0800000000000000
-      internalID: -2298199584693619186
+      spriteID: e43b64b1a6770b3c0800000000000000
+      internalID: -4345842342804671666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[Boost vitesse]]_4
+      name: bns_switch_4
       rect:
         serializedVersion: 2
-        x: 111
-        y: 37
-        width: 43
-        height: 49
+        x: 166
+        y: 92
+        width: 109
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,52 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06ba9952913b093b0800000000000000
-      internalID: -5507705423687734432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bns[Boost vitesse]]_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 50
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6ecd6a980d79189a0800000000000000
-      internalID: -6232533487385649946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bns[Boost vitesse]]_6
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 18
-        width: 43
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 12cdbd92d661a7490800000000000000
-      internalID: -7747855550827996127
+      spriteID: 0c6f2ac18e7d6f350800000000000000
+      internalID: 6050260541331666624
       vertices: []
       indices: 
       edges: []
@@ -285,13 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bns[Boost vitesse]]_0: -4924924019111008522
-      bns[Boost vitesse]]_1: 1516000678779600871
-      bns[Boost vitesse]]_2: 6176977187116448036
-      bns[Boost vitesse]]_3: -2298199584693619186
-      bns[Boost vitesse]]_4: -5507705423687734432
-      bns[Boost vitesse]]_5: -6232533487385649946
-      bns[Boost vitesse]]_6: -7747855550827996127
+      bns_switch_0: 2582122848614462125
+      bns_switch_1: 3884248853934967539
+      bns_switch_2: 4681847323306992894
+      bns_switch_3: -4345842342804671666
+      bns_switch_4: 6050260541331666624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

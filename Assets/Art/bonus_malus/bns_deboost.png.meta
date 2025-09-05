@@ -1,22 +1,31 @@
 fileFormatVersion: 2
-guid: 40af217fc3f564e4084b93cd71037165
+guid: 5fb8d06352c64e44f85baa45caca939b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3001019774795525537
-    second: bns[switch]_0
+      213: -3031114246691865826
+    second: bns_deboost_0
   - first:
-      213: 4727881727343104782
-    second: bns[switch]_1
+      213: -6914815855826343927
+    second: bns_deboost_1
   - first:
-      213: -8836074118565840349
-    second: bns[switch]_2
+      213: 3760784910958076362
+    second: bns_deboost_2
   - first:
-      213: -6014525684736797686
-    second: bns[switch]_3
+      213: 1977559738704258532
+    second: bns_deboost_3
   - first:
-      213: -2155118757486798055
-    second: bns[switch]_4
+      213: -3105342479656366824
+    second: bns_deboost_4
+  - first:
+      213: 7035219751175009241
+    second: bns_deboost_5
+  - first:
+      213: 4276480466804071992
+    second: bns_deboost_6
+  - first:
+      213: 6783999068876074775
+    second: bns_deboost_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bns[switch]_0
+      name: bns_deboost_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 77
-        width: 64
-        height: 84
+        x: 92
+        y: 123
+        width: 112
+        height: 173
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ad2c98c593c5a920800000000000000
-      internalID: 3001019774795525537
+      spriteID: e1b3e44f6a15fe5d0800000000000000
+      internalID: -3031114246691865826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[switch]_1
+      name: bns_deboost_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 135
-        width: 77
-        height: 98
+        x: 136
+        y: 130
+        width: 103
+        height: 117
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e039852b16fcc9140800000000000000
-      internalID: 4727881727343104782
+      spriteID: 9086b3a8d93a900a0800000000000000
+      internalID: -6914815855826343927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[switch]_2
+      name: bns_deboost_2
       rect:
         serializedVersion: 2
-        x: 103
-        y: 127
-        width: 9
-        height: 7
+        x: 200
+        y: 240
+        width: 15
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 32a3cd99765ff5580800000000000000
-      internalID: -8836074118565840349
+      spriteID: ac12e4673fdf03430800000000000000
+      internalID: 3760784910958076362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[switch]_3
+      name: bns_deboost_3
       rect:
         serializedVersion: 2
-        x: 14
-        y: 99
-        width: 10
-        height: 7
+        x: 202
+        y: 240
+        width: 134
+        height: 149
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a04dccc81cc188ca0800000000000000
-      internalID: -6014525684736797686
+      spriteID: 4e5e493da14b17b10800000000000000
+      internalID: 1977559738704258532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[switch]_4
+      name: bns_deboost_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 77
-        height: 98
+        x: 248
+        y: 175
+        width: 61
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +224,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 91bd73b88ea7712e0800000000000000
-      internalID: -2155118757486798055
+      spriteID: 81dc622b77b97e4d0800000000000000
+      internalID: -3105342479656366824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bns_deboost_5
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 238
+        width: 71
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d33999e61f12a160800000000000000
+      internalID: 7035219751175009241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bns_deboost_6
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 195
+        width: 71
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83ed0c8a35c195b30800000000000000
+      internalID: 4276480466804071992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bns_deboost_7
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 150
+        width: 71
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71f60f0c53b952e50800000000000000
+      internalID: 6783999068876074775
       vertices: []
       indices: 
       edges: []
@@ -235,11 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bns[switch]_0: 3001019774795525537
-      bns[switch]_1: 4727881727343104782
-      bns[switch]_2: -8836074118565840349
-      bns[switch]_3: -6014525684736797686
-      bns[switch]_4: -2155118757486798055
+      bns_deboost_0: -3031114246691865826
+      bns_deboost_1: -6914815855826343927
+      bns_deboost_2: 3760784910958076362
+      bns_deboost_3: 1977559738704258532
+      bns_deboost_4: -3105342479656366824
+      bns_deboost_5: 7035219751175009241
+      bns_deboost_6: 4276480466804071992
+      bns_deboost_7: 6783999068876074775
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
