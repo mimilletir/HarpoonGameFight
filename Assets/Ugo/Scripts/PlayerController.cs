@@ -193,6 +193,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
             _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
             _hook.GetComponent<Collider2D>().isTrigger = true;
+            _hook.GetComponent<HookController>().OnReset();
         }
     }
 
@@ -212,6 +213,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
         _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
         _hook.GetComponent<Collider2D>().isTrigger = true;
+        _hook.GetComponent<HookController>().OnReset();
     }
 
     [SerializeField] private Image _shatteredGlass;

@@ -16,6 +16,7 @@ public class HookController : MonoBehaviour
     private List<Collider2D> overlappingColliders = new List<Collider2D>();
     private bool CanShoot = false;
     private int _playerIndex;
+    private float _hookCooldown;
 
     private bool _bWillBounce = false;
     private Vector2 _velocityOnShoot;
@@ -47,7 +48,7 @@ public class HookController : MonoBehaviour
     private void FixedUpdate()
     {
         #region Shoot
-
+        
         if (_shoot is null || _aim is null)
         {
             Debug.Log("Not binded yet");
@@ -91,6 +92,7 @@ public class HookController : MonoBehaviour
 
     private void TryShoot(InputAction.CallbackContext obj)
     {
+        if (_hookCooldown >= Time.time) return;
         if (Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
         {
             CanShoot = true;
@@ -104,7 +106,7 @@ public class HookController : MonoBehaviour
             if (CanShoot)
             {
                 this.transform.parent = null;
-                _velocityOnShoot = _aim.ReadValue<Vector2>() * (_hookSpeed * Time.fixedDeltaTime);
+                _velocityOnShoot = _aim.ReadValue<Vector2>().normalized * (_hookSpeed * Time.fixedDeltaTime);
                 _rb.linearVelocity = _velocityOnShoot;
                 _collider.isTrigger = false;
                 SoundManager.Instance.UseSound(4); //HarpoonShot
@@ -161,5 +163,10 @@ public class HookController : MonoBehaviour
         if(overlappingColliders.Contains(other)) {
             overlappingColliders.Remove(other);
         }
+    }
+
+    public void OnReset()
+    {
+        _hookCooldown = Time.time + 0.2f;
     }
 }

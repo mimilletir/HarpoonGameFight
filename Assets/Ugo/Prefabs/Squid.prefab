@@ -214,6 +214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquidController
   _lifeTime: 5
-  _speed: 3
+  _speed: 2
   _damage: 30
   playerIndexMaster: 0
