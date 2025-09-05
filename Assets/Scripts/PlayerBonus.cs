@@ -37,6 +37,7 @@ public class PlayerBonus : MonoBehaviour
                     _playerController.AddSpeedMultiplier(_addedSpeedMultiplierValue);
                     break;
                 case BonusEnum.HealthUp:
+                    SoundManager.Instance.UseSound(2); //PowerUp Collect
                     _playerController.TakeDamage(-25f);
                     break;
                 case BonusEnum.HarpoonRebonce:
