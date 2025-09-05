@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 3283c360c2de9ec478c5dfed4cc94fd1
+guid: 2468aaebf5a2c334095b9c996aef0879
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3654636980132390385
-    second: bns[rebond SpeedUp]_0
+      213: 2582122848614462125
+    second: bns_switch_0
   - first:
-      213: -571136951659248699
-    second: bns[rebond SpeedUp]_1
+      213: 3884248853934967539
+    second: bns_switch_1
+  - first:
+      213: 4681847323306992894
+    second: bns_switch_2
+  - first:
+      213: -4345842342804671666
+    second: bns_switch_3
+  - first:
+      213: 6050260541331666624
+    second: bns_switch_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bns[rebond SpeedUp]_0
+      name: bns_switch_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 19
-        width: 220
-        height: 154
+        x: 212
+        y: 201
+        width: 90
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f0ad338970f184dc0800000000000000
-      internalID: -3654636980132390385
+      spriteID: da2b516dc0b85d320800000000000000
+      internalID: 2582122848614462125
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bns[rebond SpeedUp]_1
+      name: bns_switch_1
       rect:
         serializedVersion: 2
-        x: 99
-        y: 0
-        width: 38
-        height: 37
+        x: 237
+        y: 282
+        width: 109
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +149,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5c3404ee7f9e218f0800000000000000
-      internalID: -571136951659248699
+      spriteID: 3fa0306c0cf97e530800000000000000
+      internalID: 3884248853934967539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bns_switch_2
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 271
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef4a356c55349f040800000000000000
+      internalID: 4681847323306992894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bns_switch_3
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 231
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e43b64b1a6770b3c0800000000000000
+      internalID: -4345842342804671666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bns_switch_4
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 92
+        width: 109
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c6f2ac18e7d6f350800000000000000
+      internalID: 6050260541331666624
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bns[rebond SpeedUp]_0: -3654636980132390385
-      bns[rebond SpeedUp]_1: -571136951659248699
+      bns_switch_0: 2582122848614462125
+      bns_switch_1: 3884248853934967539
+      bns_switch_2: 4681847323306992894
+      bns_switch_3: -4345842342804671666
+      bns_switch_4: 6050260541331666624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 40af217fc3f564e4084b93cd71037165
+guid: 4bef8573267faf344becff5e7cf230c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3001019774795525537
-    second: bns[switch]_0
-  - first:
-      213: 4727881727343104782
-    second: bns[switch]_1
-  - first:
-      213: -8836074118565840349
-    second: bns[switch]_2
-  - first:
-      213: -6014525684736797686
-    second: bns[switch]_3
-  - first:
-      213: -2155118757486798055
-    second: bns[switch]_4
+      213: -5473468172022963947
+    second: mls_rebond_down_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bns[switch]_0
+      name: mls_rebond_down_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 77
-        width: 64
-        height: 84
+        x: 101
+        y: 146
+        width: 310
+        height: 232
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,96 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ad2c98c593c5a920800000000000000
-      internalID: 3001019774795525537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bns[switch]_1
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 135
-        width: 77
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e039852b16fcc9140800000000000000
-      internalID: 4727881727343104782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bns[switch]_2
-      rect:
-        serializedVersion: 2
-        x: 103
-        y: 127
-        width: 9
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 32a3cd99765ff5580800000000000000
-      internalID: -8836074118565840349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bns[switch]_3
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 99
-        width: 10
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a04dccc81cc188ca0800000000000000
-      internalID: -6014525684736797686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bns[switch]_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 77
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 91bd73b88ea7712e0800000000000000
-      internalID: -2155118757486798055
+      spriteID: 5112a2d72b55a04b0800000000000000
+      internalID: -5473468172022963947
       vertices: []
       indices: 
       edges: []
@@ -235,11 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bns[switch]_0: 3001019774795525537
-      bns[switch]_1: 4727881727343104782
-      bns[switch]_2: -8836074118565840349
-      bns[switch]_3: -6014525684736797686
-      bns[switch]_4: -2155118757486798055
+      mls_rebond_down_0: -5473468172022963947
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
