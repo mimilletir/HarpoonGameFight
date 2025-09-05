@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerBonus : MonoBehaviour
     [SerializeField] private GameObject _squid;
     [SerializeField] private PowerUpUI _powerUpUI;
     [SerializeField] private float _addedSpeedMultiplierValue = 0.2f;
+    [SerializeField] private Vector2 _a;
     private PlayerController _playerController;
 
     public bool haveBonus = false;
@@ -28,10 +30,14 @@ public class PlayerBonus : MonoBehaviour
 
         if (_throwItem.IsPressed() && haveBonus)
         {
+            haveBonus = false;
+
             switch (_bonus)
             {
                 case BonusEnum.BouncingBall:
-                    GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, Quaternion.identity);
+                    GameObject BouncingBall = Instantiate(_bouncingBall, transform.position, _playerController.transform.rotation);
+                    BouncingBall.GetComponent<BouncingBall>()._a =_playerController.GetComponent<PlayerController>().a;
+                    BouncingBall.GetComponent<BouncingBall>().playerIndexMaster = _playerController.PlayerIndex;
                     break;
                 case BonusEnum.SpeedBoost:
                     _playerController.AddSpeedMultiplier(_addedSpeedMultiplierValue);
@@ -60,7 +66,6 @@ public class PlayerBonus : MonoBehaviour
                     break;*/
             }
 
-            haveBonus = false;
             _powerUpUI.UpdateUI(BonusEnum.None);
         }
     }
@@ -72,10 +77,11 @@ public class PlayerBonus : MonoBehaviour
         _powerUpUI.UpdateUI(bonus);
     }
 
-    public void Initialize(InputAction throwItem)
+    public void Initialize(InputAction throwItem, Vector2 a)
     {
         Debug.Log("Initializing throwItem");
         _throwItem = throwItem;
+        _a = a;
     }
 
     public enum BonusEnum

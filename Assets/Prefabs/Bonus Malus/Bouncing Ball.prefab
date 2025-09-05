@@ -78,7 +78,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -110,10 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08010c68e6726104f8fe23a0acb9f545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BouncingBall
-  _speed: 25
+  _speed: 5
   _damage: 25
-  _maxNBounce: 4
+  _maxNBounce: 5
   playerIndexMaster: 0
+  _a: {x: 0, y: 0}
 --- !u!1 &975236886776255728
 GameObject:
   m_ObjectHideFlags: 0
