@@ -176,10 +176,31 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     public void ResetHook()
     {
-        Debug.Log("Reset Hook");
+        if (_rbHook.linearVelocity == Vector2.zero)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            _bounceSpeedMultiplier = 1.0f;
+            _bHasBounceTarget = false;
+            
+            _hook.transform.SetParent(this.transform);
+            _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
+            _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            _hook.GetComponent<Collider2D>().isTrigger = true;
+        }
+    }
+
+    public IEnumerator ForceResetHook()
+    {
         _rb.linearVelocity = Vector2.zero;
+        _rbHook.linearVelocity = Vector2.zero;
+        while (Vector2.Distance(_hook.transform.position, this.transform.position) > .9f)
+        {
+            _hook.transform.position = Vector3.Lerp(_hook.transform.position, this.transform.position, 0.05f);
+            yield return new WaitForSeconds(.01f);
+        }
         _bounceSpeedMultiplier = 1.0f;
-        
+        _bHasBounceTarget =  false;
+            
         _hook.transform.SetParent(this.transform);
         _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
         _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -255,6 +276,11 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Borders"))
+        {
+            _rb.linearVelocity = Vector2.zero;
+            StartCoroutine(ForceResetHook());
+        }
         if (other.CompareTag("Player"))
         {
             
