@@ -41,7 +41,7 @@ public class SquidController : MonoBehaviour
         {
             if (other.gameObject.GetComponent<PlayerController>().PlayerIndex == playerIndexMaster)
                 return;
-
+            SoundManager.Instance.UseSound(13); //Star Damage
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.TakeDamage(_damage);
             Destroy(this.gameObject);

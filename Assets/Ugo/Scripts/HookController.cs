@@ -107,6 +107,7 @@ public class HookController : MonoBehaviour
                 _velocityOnShoot = _aim.ReadValue<Vector2>() * (_hookSpeed * Time.fixedDeltaTime);
                 _rb.linearVelocity = _velocityOnShoot;
                 _collider.isTrigger = false;
+                SoundManager.Instance.UseSound(4); //HarpoonShot
             }
         } else
         {
