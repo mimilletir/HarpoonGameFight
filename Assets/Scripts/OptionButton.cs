@@ -20,6 +20,7 @@ public class OptionButton : MonoBehaviour
     public PauseMenuInteractions OnInteract()
     {
         Debug.Log("Interact with button : " + _pauseMenuInteraction);
+        SoundManager.Instance.UseSound(0); //Button click
         if (_pauseMenuInteraction == PauseMenuInteractions.DisableScreenShake)
         {
             _value = GameManager.Instance.Settings.DisableCameraShaking ? "No" : "Yes";

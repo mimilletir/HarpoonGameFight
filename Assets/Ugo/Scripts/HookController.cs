@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -26,6 +27,14 @@ public class HookController : MonoBehaviour
         set => _playerIndex = value;
     }
 
+    private void OnDestroy()
+    {
+        if (_shoot != null)
+        {
+            _shoot.started -= TryShoot;
+        }
+    }
+
 
     private void Start()
     {
@@ -52,7 +61,37 @@ public class HookController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, h);
         }
         
-        if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
+        // if (_shoot.IsPressed() && Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
+        // {
+        //     CanShoot = true;
+        //     foreach (Collider2D collider in overlappingColliders)
+        //     {
+        //         if (collider.gameObject.layer == LayerMask.NameToLayer("Environnement"))
+        //         {
+        //             CanShoot =  false;
+        //         }
+        //     }
+        //     if (CanShoot)
+        //     {
+        //         this.transform.parent = null;
+        //         _velocityOnShoot = _aim.ReadValue<Vector2>() * (_hookSpeed * Time.fixedDeltaTime);
+        //         _rb.linearVelocity = _velocityOnShoot;
+        //         _collider.isTrigger = false;
+        //     }
+        // } else if (_shoot.started)
+        // {
+        //     Debug.Log("Force Resetting");
+        //     StartCoroutine(_player.ForceResetHook());
+        // }
+
+       
+
+        #endregion
+    }
+
+    private void TryShoot(InputAction.CallbackContext obj)
+    {
+        if (Vector2.Distance(_player.transform.position, this.transform.position) < 1f)
         {
             CanShoot = true;
             foreach (Collider2D collider in overlappingColliders)
@@ -68,10 +107,13 @@ public class HookController : MonoBehaviour
                 _velocityOnShoot = _aim.ReadValue<Vector2>() * (_hookSpeed * Time.fixedDeltaTime);
                 _rb.linearVelocity = _velocityOnShoot;
                 _collider.isTrigger = false;
+                SoundManager.Instance.UseSound(4); //HarpoonShot
             }
+        } else
+        {
+            Debug.Log("Force Resetting");
+            StartCoroutine(_player.ForceResetHook());
         }
-
-        #endregion
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -96,6 +138,8 @@ public class HookController : MonoBehaviour
         Debug.Log("Initializing hook");
         _aim = aimInput;
         _shoot = hookInput;
+        _shoot.started += TryShoot;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)

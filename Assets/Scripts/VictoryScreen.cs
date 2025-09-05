@@ -12,5 +12,6 @@ public class VictoryScreen : MonoBehaviour
         _gameManager = GameManager.Instance;
         _wonPlayerIndex = _gameManager == null ? -1 : _gameManager.WonPlayer;
         _victoryText.text = "Congratulations Player " + _wonPlayerIndex.ToString() + "\n You Won!";
+        SoundManager.Instance.UseSound(3); //Victory
     }
 }
