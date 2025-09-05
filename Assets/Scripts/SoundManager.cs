@@ -34,6 +34,8 @@ public class SoundManager : MonoBehaviour
         {
             index = 3;
         }
+
+        if (Sources[index] == null) return;
         Sources[index].clip = Clips[whatSound];
         Sources[index].Play();
     }
