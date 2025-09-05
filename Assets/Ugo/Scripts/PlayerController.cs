@@ -121,8 +121,14 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         if (a != Vector2.zero && _rbHook.linearVelocity == Vector2.zero && Vector2.Distance(_rbHook.position, this.transform.position) < 1f)
         {
             h = (Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg) - 90;
-            this.transform.rotation = Quaternion.Euler(0, 0, h);
-            //_hook.transform.rotation = Quaternion.Euler(0, 0, h);
+            
+            
+            
+//            this.transform.rotation = Quaternion.Euler(0, 0, h);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, h), 0.2f);
+            
+            
+            
 
         }
         else if (_rb.linearVelocity != Vector2.zero)
@@ -176,11 +182,32 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     public void ResetHook()
     {
-        Debug.Log("Reset Hook");
-        SoundManager.Instance.UseSound(6); //HarpoonReset
+        if (_rbHook.linearVelocity == Vector2.zero)
+        {
+            SoundManager.Instance.UseSound(6); //HarpoonReset
+            _rb.linearVelocity = Vector2.zero;
+            _bounceSpeedMultiplier = 1.0f;
+            _bHasBounceTarget = false;
+            
+            _hook.transform.SetParent(this.transform);
+            _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
+            _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            _hook.GetComponent<Collider2D>().isTrigger = true;
+        }
+    }
+
+    public IEnumerator ForceResetHook()
+    {
         _rb.linearVelocity = Vector2.zero;
+        _rbHook.linearVelocity = Vector2.zero;
+        while (Vector2.Distance(_hook.transform.position, this.transform.position) > .9f)
+        {
+            _hook.transform.position = Vector3.Lerp(_hook.transform.position, this.transform.position, 0.05f);
+            yield return new WaitForSeconds(.01f);
+        }
         _bounceSpeedMultiplier = 1.0f;
-        
+        _bHasBounceTarget =  false;
+            
         _hook.transform.SetParent(this.transform);
         _hook.transform.localPosition = new Vector3(0, 3.6f, 1);
         _hook.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -283,6 +310,11 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Borders"))
+        {
+            _rb.linearVelocity = Vector2.zero;
+            StartCoroutine(ForceResetHook());
+        }
         if (other.CompareTag("Player"))
         {
             
