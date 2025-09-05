@@ -215,17 +215,15 @@ MonoBehaviour:
   - Bonus: 1
     Icon: {fileID: 21300000, guid: 526460d274dd5f94a8a23eae5c00b5f4, type: 3}
   - Bonus: 2
-    Icon: {fileID: 21300000, guid: 35a3a92ab2e93c047b44bb7654525b4d, type: 3}
+    Icon: {fileID: 21300000, guid: 56be254f38b270d40b64e6f5b6c07967, type: 3}
   - Bonus: 3
-    Icon: {fileID: 21300000, guid: b05087a240325d94d877d3815aecb270, type: 3}
+    Icon: {fileID: 21300000, guid: 2fac9d8cf519f08449438dcc8c9f9e85, type: 3}
   - Bonus: 4
-    Icon: {fileID: 21300000, guid: 34f7c9be26870ab40afa543ca3c43fdc, type: 3}
-  - Bonus: 7
-    Icon: {fileID: 21300000, guid: 40af217fc3f564e4084b93cd71037165, type: 3}
+    Icon: {fileID: 21300000, guid: 8f4c30be11b53574ebd6bb781260d2cc, type: 3}
   - Bonus: 6
     Icon: {fileID: 21300000, guid: 1ccb391ee47dad447bb307218ea78c57, type: 3}
   - Bonus: 5
-    Icon: {fileID: 21300000, guid: 3283c360c2de9ec478c5dfed4cc94fd1, type: 3}
+    Icon: {fileID: 21300000, guid: 5fb8d06352c64e44f85baa45caca939b, type: 3}
 --- !u!1001 &90786797
 PrefabInstance:
   m_ObjectHideFlags: 0
