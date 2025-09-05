@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
 
     [SerializeField] private Image _shatteredGlass;
     //Min Damage to have the shatteredGlass Effect
-    [SerializeField] private float _shatteredGlassDamageValue = 40.0f;
+    [SerializeField] private float _shatteredGlassDamageValue = 20.0f;
 
     public void TakeDamage(float damage)
     {
