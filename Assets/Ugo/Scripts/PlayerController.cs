@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
     private float life;
     private HookController _hookController;
     private PlayerBonus _playerBonus;
-    private Vector2 a;
+    [HideInInspector] public Vector2 a;
     private float h = 0.0f;
     private Rigidbody2D _rbHook;
     private Rigidbody2D _rb;
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         }
         if (_playerBonus != null)
         {
-            _playerBonus.Initialize(_throwItem);
+            _playerBonus.Initialize(_throwItem, a);
         }
     }
     
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         ResetHook();
         if (_playerBonus != null)
         {
-            _playerBonus.Initialize(_throwItem);
+            _playerBonus.Initialize(_throwItem, a);
         }
     }
 
