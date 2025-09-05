@@ -19,12 +19,12 @@ public class RulesUI : MonoBehaviour
     {
         _scrollInput = playerInput.actions["MoveSelection"];
     }
-/*
+
     public void Update()
     {
         if (_scrollInput == null) return;
         Vector2 move = _scrollInput.ReadValue<Vector2>();
         if (Mathf.Abs(move.y) < 0.01f) return;
         _rulesAsset.position = new Vector3(_rulesAsset.position.x, Mathf.Clamp(_rulesAsset.position.y + Mathf.Sign(move.y) * _scrollSpeed * -1, _minYScroll, _maxYScroll), _rulesAsset.position.z);
-    }*/
+    }
 }
