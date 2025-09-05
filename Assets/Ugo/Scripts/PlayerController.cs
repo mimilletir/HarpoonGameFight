@@ -205,6 +205,8 @@ public class PlayerController : MonoBehaviour, IInputInitialize
             {
                 StartCoroutine(CameraShake());
             }
+
+            StartCoroutine(YouTookDamageMaaan());
         }
         
         life = Mathf.Clamp(life - damage, 0, _maxLife);
@@ -212,6 +214,30 @@ public class PlayerController : MonoBehaviour, IInputInitialize
         if (life <= 0)
         {
             OnDie();
+        }
+    }
+
+    private IEnumerator YouTookDamageMaaan()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer hookSpriteRenderer = _hook.GetComponent<SpriteRenderer>();
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.Lerp(0.5f,1,j/20.0f));
+                hookSpriteRenderer.color = new Color(hookSpriteRenderer.color.r, hookSpriteRenderer.color.g, hookSpriteRenderer.color.b, Mathf.Lerp(0.5f,1,j/20.0f));
+                yield return new WaitForSeconds(0.01f);
+            }
+            yield return new WaitForSeconds(0.1f);
+            for (int j = 0; j < 10; j++)
+            {
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.Lerp(1,0.5f,j/20.0f));
+                hookSpriteRenderer.color = new Color(hookSpriteRenderer.color.r, hookSpriteRenderer.color.g, hookSpriteRenderer.color.b, Mathf.Lerp(1,0.5f,j/20.0f));
+                yield return new WaitForSeconds(0.01f);
+            }
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1);
+            hookSpriteRenderer.color = new Color(hookSpriteRenderer.color.r, hookSpriteRenderer.color.g, hookSpriteRenderer.color.b, 1);
         }
     }
 
