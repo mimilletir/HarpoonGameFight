@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe0669b8ac25b24db3b88a1d6ba41ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SquidController
-  _lifeTime: 50
+  _lifeTime: 5
   _speed: 3
-  _damage: 50
+  _damage: 30
   playerIndexMaster: 0
